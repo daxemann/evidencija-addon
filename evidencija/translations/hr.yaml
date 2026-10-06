@@ -1,0 +1,12 @@
+configuration:
+  tailscale:
+    name: Internet pristup preko Tailscale Funnel
+    description: Aplikacija dobiva vlastitu javnu HTTPS adresu (npr. https://evidencija.<tailnet>.ts.net). Pri prvom pokretanju u zapisniku (Log) se pojavljuje poveznica za prijavu u Tailscale.
+  tailscale_hostname:
+    name: Naziv uređaja u Tailscaleu
+    description: Prvi dio javne adrese.
+  tailscale_authkey:
+    name: Tailscale auth key (nije obavezno)
+    description: Umjesto prijave preko poveznice u zapisniku.
+network:
+  5080/tcp: Web sučelje u lokalnoj mreži

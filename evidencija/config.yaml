@@ -1,0 +1,25 @@
+name: Evidencija (lovačka udruga)
+version: "1.0.0"
+slug: evidencija
+description: Evidencija članova, radnih akcija, članarine i oglasnik za lovačke udruge
+url: https://github.com/daxemann/evidencija-addon
+arch:
+  - aarch64
+  - amd64
+startup: application
+boot: auto
+init: false
+ports:
+  5080/tcp: 5080
+ports_description:
+  5080/tcp: Web sučelje u lokalnoj mreži
+webui: http://[HOST]:[PORT:5080]
+watchdog: tcp://[HOST]:[PORT:5080]
+options:
+  tailscale: true
+  tailscale_hostname: evidencija
+  tailscale_authkey: ""
+schema:
+  tailscale: bool
+  tailscale_hostname: str
+  tailscale_authkey: password?
