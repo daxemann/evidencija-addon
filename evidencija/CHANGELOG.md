@@ -1,3 +1,6 @@
+## 1.0.2
+- Moje radne akcije: preglednije na mobitelu.
+
 ## 1.0.1
 - Vraćanje kompletne kopije i za glavnog admina (Sustav → Sigurnosne kopije).
 - Preuzimanje kompletne kopije bez dvostrukog skidanja.
