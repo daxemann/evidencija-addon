@@ -11,3 +11,5 @@ Add-on pokreće PHP verziju programa [lovacka-evidencija](https://github.com/dax
 Upute: [evidencija/DOCS.md](evidencija/DOCS.md)
 
 Repozitorij sadrži samo program – nikakve podatke članova.
+
+**Kontakt i pomoć:** daxemann@googlemail.com · [GitHub Issues](https://github.com/daxemann/lovacka-evidencija/issues)

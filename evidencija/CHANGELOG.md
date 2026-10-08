@@ -1,3 +1,6 @@
+## 1.2.3
+- Pomoć i kontakt u izborniku (prijava greške, prijedlog, pitanje autoru).
+
 ## 1.2.2
 - Brisanje vlastitih poruka i cijelih razgovora (članovi i oglasnik).
 
