@@ -1,3 +1,6 @@
+## 1.2.2
+- Brisanje vlastitih poruka i cijelih razgovora (članovi i oglasnik).
+
 ## 1.2.1
 - Članarina: postojećim zaduženjima bez plana jednim klikom dodijeliti plan plaćanja.
 
