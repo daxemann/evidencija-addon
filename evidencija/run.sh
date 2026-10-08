@@ -42,8 +42,7 @@ if [ "$TS" = "true" ]; then
         echo "[tailscale] =============================================="
         if [ "$(cat /data/javna_adresa 2>/dev/null)" != "$adresa" ]; then
           echo "$adresa" > /data/javna_adresa
-          # aplikacija se ponovno pokreće da preuzme javnu adresu
-          [ -f /tmp/app.pid ] && kill -TERM "$(cat /tmp/app.pid)" 2>/dev/null
+          # PHP čita adresu pri svakom zahtjevu – ponovno pokretanje nije potrebno
         fi
         break
       fi
@@ -55,11 +54,23 @@ else
   echo "[tailscale] isključeno – aplikacija je dostupna samo u lokalnoj mreži (port 5080)"
 fi
 
+# konfiguracija PHP verzije: podaci ostaju u /data/Podaci (ista baza kao u 1.0.x)
+cat > /app/config.php <<'CFG'
+<?php
+return [
+    'podaci' => '/data/Podaci',
+    'javna_adresa' => trim((string) @file_get_contents('/data/javna_adresa')),
+    'vremenska_zona' => 'Europe/Zagreb',
+    'prikazi_greske' => false,
+];
+CFG
+chown -R apache:apache /data/Podaci /app/config.php
+mkdir -p /run/apache2
+
 cd /app
 while true; do
-  if [ -f /data/javna_adresa ]; then export JavnaAdresa="$(cat /data/javna_adresa)"; fi
-  echo "[evidencija] pokretanje aplikacije"
-  dotnet LuFazan.Evidencija.dll &
+  echo "[evidencija] pokretanje aplikacije (PHP)"
+  httpd -D FOREGROUND &
   APP_PID=$!
   echo "$APP_PID" > /tmp/app.pid
   wait "$APP_PID"

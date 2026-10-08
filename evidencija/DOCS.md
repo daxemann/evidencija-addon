@@ -22,4 +22,4 @@ Aplikacija dodatno radi dnevnu kopiju baze (zadnjih 30).
 | tailscale_hostname | prvi dio adrese |
 | tailscale_authkey | umjesto prijave poveznicom (nije obavezno) |
 
-Memorija aplikacije ograničena je na ~384 MB, da Home Assistant uvijek ima prednost.
+Aplikacija je PHP verzija programa [lovacka-evidencija](https://github.com/daxemann/lovacka-evidencija) (Apache + PHP 8.3).
