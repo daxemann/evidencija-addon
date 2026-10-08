@@ -1,3 +1,6 @@
+## 1.1.1
+- Ispravak: poruke Tailscalea (poveznica za prijavu) ponovno vidljive u Logu.
+
 ## 1.1.0
 - Aplikacija sada radi na **PHP verziji** (ista kao na GitHubu daxemann/lovacka-evidencija) – manja, brža za pokretanje, ista baza, fotografije i lozinke.
 - Novo: **Samoprijava** – jedna zajednička poveznica za sve članove (npr. WhatsApp grupa), administrator povezuje i odobrava.

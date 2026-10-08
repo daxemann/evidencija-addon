@@ -2,7 +2,7 @@ ARG BUILD_FROM
 FROM tailscale/tailscale:stable AS ts
 
 FROM alpine:3.21
-RUN apk add --no-cache bash jq tzdata apache2 php83 php83-apache2 \
+RUN apk add --no-cache bash jq tzdata sed apache2 php83 php83-apache2 \
         php83-pdo php83-pdo_sqlite php83-sqlite3 php83-mbstring php83-openssl php83-zip php83-dom php83-xml \
         php83-simplexml php83-xmlwriter php83-gd php83-session php83-ctype php83-fileinfo php83-iconv \
         php83-curl php83-tokenizer php83-intl \
