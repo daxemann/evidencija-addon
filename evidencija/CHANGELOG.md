@@ -1,3 +1,6 @@
+## 1.2.1
+- Članarina: postojećim zaduženjima bez plana jednim klikom dodijeliti plan plaćanja.
+
 ## 1.2.0
 - Kalendar termina (po sekcijama), „dolazim / ne dolazim“, pretplata u kalendar mobitela.
 - Članarina u ratama (1–12, vlastiti iznosi i datumi), plan po članu, diskretan podsjetnik članu.
