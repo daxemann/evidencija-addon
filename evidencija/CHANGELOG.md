@@ -1,3 +1,10 @@
+## 1.2.0
+- Kalendar termina (po sekcijama), „dolazim / ne dolazim“, pretplata u kalendar mobitela.
+- Članarina u ratama (1–12, vlastiti iznosi i datumi), plan po članu, diskretan podsjetnik članu.
+- Početna stranica za članove (mobitel), imenik s dijeljenjem kontakata po izboru člana, poruke među članovima.
+- Viber uz WhatsApp, „Dodaj na početni zaslon“ (Android, iPhone).
+- Baza se nadograđuje automatski pri prvom pokretanju (nove tablice); postojeći podaci ostaju.
+
 ## 1.1.1
 - Ispravak: poruke Tailscalea (poveznica za prijavu) ponovno vidljive u Logu.
 
