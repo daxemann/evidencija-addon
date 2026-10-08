@@ -1,6 +1,7 @@
 # Evidencija – lovačka udruga
 
-Evidencija članova, radnih akcija (bodovi), članarine, oglasnik (kupujem/prodajem) i pristup za članove s mobitela.
+Evidencija članova, radnih akcija (bodovi), kalendar termina (po sekcijama), članarina u ratama s diskretnim podsjetnikom, imenik (član sam odlučuje što dijeli),
+poruke među članovima, oglasnik (kupujem/prodajem) i pristup za članove s mobitela – i kao ikona na početnom zaslonu (Android, iPhone).
 
 ## Prvo pokretanje
 1. **Start** → u kartici **Log** pričekajte poruku `[tailscale] … login.tailscale.com/a/…` i otvorite tu poveznicu (prijava u Tailscale račun).
@@ -13,7 +14,7 @@ U lokalnoj mreži aplikacija je dostupna i na `http://<IP-Home-Assistanta>:5080`
 
 ## Podaci i sigurnosne kopije
 Svi podaci (baza, fotografije, ključevi) su u podacima add-ona i automatski ulaze u **Home Assistant backup**.
-Aplikacija dodatno radi dnevnu kopiju baze (zadnjih 30).
+Aplikacija dodatno radi dnevnu kopiju baze (zadnjih 30). Pri nadogradnji se baza sama proširuje novim tablicama – postojeći podaci ostaju.
 
 ## Opcije
 | Opcija | Značenje |
