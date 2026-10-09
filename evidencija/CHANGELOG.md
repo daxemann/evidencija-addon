@@ -1,3 +1,7 @@
+## 1.4.0
+- Mobilna dezinfekcijska stanica za skupni lov (aktivacija na licu mjesta, praćenje uživo, zasebna knjiga i PDF).
+- Upis dezinfekcije i bez signala – šalje se automatski kad ima interneta.
+
 ## 1.3.0
 - Knjiga dezinfekcije (ASK): QR oznaka na stanici svake sekcije, provjera lokacije (GPS), dolazak/odlazak, razlog, reg. oznaka, suputnici i gosti.
 - Pregled po sekcijama, PDF, e-pošta, naknadni upis, poništavanje; pristup za inspekciju (QR + lozinka).
