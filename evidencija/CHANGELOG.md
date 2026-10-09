@@ -1,3 +1,6 @@
+## 1.5.0
+- Upis za drugog lovca na dezinfekcijskoj stanici (lovočuvar i ovlašteni).
+
 ## 1.4.1
 - Trajno brisanje poništenih (probnih) upisa dezinfekcije – glavni admin.
 
