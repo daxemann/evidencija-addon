@@ -1,3 +1,6 @@
+## 1.7.0
+- Potpis odgovorne osobe na PDF-u evidencije dezinfekcije.
+
 ## 1.6.0
 - Fotografije papirnatih lista dezinfekcije (lovci bez mobitela) u knjizi, PDF-u i pregledu za inspekciju.
 
