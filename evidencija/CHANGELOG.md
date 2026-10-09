@@ -1,3 +1,6 @@
+## 1.7.2
+- Tolerancija GPS-a najviše 150 m izvan radijusa.
+
 ## 1.7.1
 - Odgovorna osoba i potpis po sekciji.
 
