@@ -1,3 +1,8 @@
+## 1.3.0
+- Knjiga dezinfekcije (ASK): QR oznaka na stanici svake sekcije, provjera lokacije (GPS), dolazak/odlazak, razlog, reg. oznaka, suputnici i gosti.
+- Pregled po sekcijama, PDF, e-pošta, naknadni upis, poništavanje; pristup za inspekciju (QR + lozinka).
+- Moja vozila u profilu; sklopivi izbornik.
+
 ## 1.2.3
 - Pomoć i kontakt u izborniku (prijava greške, prijedlog, pitanje autoru).
 
