@@ -1,3 +1,6 @@
+## 1.7.1
+- Odgovorna osoba i potpis po sekciji.
+
 ## 1.7.0
 - Potpis odgovorne osobe na PDF-u evidencije dezinfekcije.
 
