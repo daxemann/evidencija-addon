@@ -1,3 +1,6 @@
+## 1.6.0
+- Fotografije papirnatih lista dezinfekcije (lovci bez mobitela) u knjizi, PDF-u i pregledu za inspekciju.
+
 ## 1.5.0
 - Upis za drugog lovca na dezinfekcijskoj stanici (lovočuvar i ovlašteni).
 
