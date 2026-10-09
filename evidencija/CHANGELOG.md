@@ -1,3 +1,6 @@
+## 1.4.1
+- Trajno brisanje poništenih (probnih) upisa dezinfekcije – glavni admin.
+
 ## 1.4.0
 - Mobilna dezinfekcijska stanica za skupni lov (aktivacija na licu mjesta, praćenje uživo, zasebna knjiga i PDF).
 - Upis dezinfekcije i bez signala – šalje se automatski kad ima interneta.
