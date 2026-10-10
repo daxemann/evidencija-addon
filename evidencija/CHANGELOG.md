@@ -1,3 +1,6 @@
+## 1.9.1
+- PDF knjige dezinfekcije sigurno i za velika razdoblja (ZIP po mjesecima); bez ograničenja 5000 upisa.
+
 ## 1.9.0
 - Kompletna kopija (ZIP) sadrži i gotove PDF-ove knjige dezinfekcije (po mjesecima) i izjave za inspekciju.
 
