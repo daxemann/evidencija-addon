@@ -1,3 +1,9 @@
+## 1.9.4
+- Lovački dnevnik samo uz novo pravo „Lovište – lovački dnevnik“ (Sustav → Uloge i prava); pri nadogradnji ga dobivaju uloge sa svim pravima i „Lovište – nadzor“.
+
+## 1.9.3
+- Gumb „Trenutna adresa“ (javna adresa) ispravljen; upozorenje kod pozivnice/samoprijave ako poveznica vodi na privatnu (npr. Tailscale) ili drugu adresu.
+
 ## 1.9.2
 - Izjava za inspekciju: pravni temelj za elektronički oblik evidencije (eIDAS čl. 46.).
 
