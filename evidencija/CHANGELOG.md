@@ -1,3 +1,6 @@
+## 1.8.6
+- Mobilna stanica: pri zatvaranju organizirana dezinfekcija pri odlasku za sve bez upisanog odlaska (s potvrdom i imenima dežurnih).
+
 ## 1.8.5
 - Inspekcija: izjava o vođenju evidencije dezinfekcije (pravni temelj, zaštita od promjena) – pregled i PDF; kopija programa (ZIP) za provjeru.
 
