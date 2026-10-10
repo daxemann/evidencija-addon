@@ -1,3 +1,6 @@
+## 1.9.0
+- Kompletna kopija (ZIP) sadrži i gotove PDF-ove knjige dezinfekcije (po mjesecima) i izjave za inspekciju.
+
 ## 1.8.9
 - Granice lovišta (KML) u bazi – uključene u sigurnosne kopije i vraćanje na novom poslužitelju.
 
