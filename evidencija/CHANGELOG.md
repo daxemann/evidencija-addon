@@ -1,3 +1,6 @@
+## 1.8.8
+- Početak rada: brisanje svih probnih upisa dezinfekcije (i lovišta) uz sigurnosnu kopiju – glavni admin.
+
 ## 1.8.7
 - Izjava za inspekciju: bez broja verzije, automatski potpisi sekcija i predsjednika; gumb u knjizi dezinfekcije.
 
