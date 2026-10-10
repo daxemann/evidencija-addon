@@ -1,3 +1,6 @@
+## 1.8.7
+- Izjava za inspekciju: bez broja verzije, automatski potpisi sekcija i predsjednika; gumb u knjizi dezinfekcije.
+
 ## 1.8.6
 - Mobilna stanica: pri zatvaranju organizirana dezinfekcija pri odlasku za sve bez upisanog odlaska (s potvrdom i imenima dežurnih).
 
