@@ -1,3 +1,6 @@
+## 1.9.5
+- Upozorenje kod pozivnice: *.ts.net (Tailscale Funnel) se smatra javnom adresom.
+
 ## 1.9.4
 - Lovački dnevnik samo uz novo pravo „Lovište – lovački dnevnik“ (Sustav → Uloge i prava); pri nadogradnji ga dobivaju uloge sa svim pravima i „Lovište – nadzor“.
 
