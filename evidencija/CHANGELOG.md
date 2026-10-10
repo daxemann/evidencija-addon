@@ -1,3 +1,6 @@
+## 1.8.5
+- Inspekcija: izjava o vođenju evidencije dezinfekcije (pravni temelj, zaštita od promjena) – pregled i PDF; kopija programa (ZIP) za provjeru.
+
 ## 1.8.4
 - Lovački dnevnik: dolazak bez odlaska prikazan samo s vremenom dolaska.
 
