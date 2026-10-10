@@ -1,3 +1,6 @@
+## 1.8.1
+- Lovački dnevnik: i dolasci iz knjige dezinfekcije (radna akcija, hranjenje…), izbornik Aktivnost.
+
 ## 1.8.0
 - Novo: **Lovište** – karta lovišta (granice iz KML-a), lovne naprave sa sličicama (odabir dodirom, uvoz fotografija s GPS-om),
   zauzimanje čeke (i za gosta), automatsko oslobađanje u 03:00, obavijesti lovočuvarima sekcije, Danas u lovištu, lovački dnevnik.
