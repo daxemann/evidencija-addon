@@ -1,3 +1,6 @@
+## 1.8.4
+- Lovački dnevnik: dolazak bez odlaska prikazan samo s vremenom dolaska.
+
 ## 1.8.3
 - Lovački dnevnik: lov bez čeke iz dezinfekcije kao pirš / obilazak, bez dvostrukih upisa.
 
