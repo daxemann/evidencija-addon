@@ -1,3 +1,6 @@
+## 1.8.2
+- Lovački dnevnik: PDF umjesto Excela (CSV).
+
 ## 1.8.1
 - Lovački dnevnik: i dolasci iz knjige dezinfekcije (radna akcija, hranjenje…), izbornik Aktivnost.
 
