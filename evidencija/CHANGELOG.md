@@ -1,3 +1,6 @@
+## 1.8.3
+- Lovački dnevnik: lov bez čeke iz dezinfekcije kao pirš / obilazak, bez dvostrukih upisa.
+
 ## 1.8.2
 - Lovački dnevnik: PDF umjesto Excela (CSV).
 
