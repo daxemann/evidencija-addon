@@ -1,3 +1,6 @@
+## 1.10.0
+- Ažuriranje iz aplikacije: glavni admin vidi novu verziju i ažurira jednim klikom (Sustav → Ažuriranje programa). Prije toga automatska kopija baze; add-on se ažurira preko Supervisora.
+
 ## 1.9.5
 - Upozorenje kod pozivnice: *.ts.net (Tailscale Funnel) se smatra javnom adresom.
 

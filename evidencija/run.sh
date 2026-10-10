@@ -65,6 +65,13 @@ return [
 ];
 CFG
 chown -R apache:apache /data/Podaci /app/config.php
+
+# token za Supervisor (gumb „Ažuriraj“ u aplikaciji) – samo u RAM-u, čita ga samo apache
+mkdir -p /run/evidencija
+if [ -n "$SUPERVISOR_TOKEN" ]; then
+  printf '%s' "$SUPERVISOR_TOKEN" > /run/evidencija/supervisor_token
+  chown apache:apache /run/evidencija/supervisor_token && chmod 400 /run/evidencija/supervisor_token
+fi
 mkdir -p /run/apache2
 
 cd /app
