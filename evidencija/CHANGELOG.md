@@ -1,3 +1,6 @@
+## 1.9.2
+- Izjava za inspekciju: pravni temelj za elektronički oblik evidencije (eIDAS čl. 46.).
+
 ## 1.9.1
 - PDF knjige dezinfekcije sigurno i za velika razdoblja (ZIP po mjesecima); bez ograničenja 5000 upisa.
 
