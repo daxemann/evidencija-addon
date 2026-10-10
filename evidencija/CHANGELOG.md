@@ -1,3 +1,6 @@
+## 1.8.9
+- Granice lovišta (KML) u bazi – uključene u sigurnosne kopije i vraćanje na novom poslužitelju.
+
 ## 1.8.8
 - Početak rada: brisanje svih probnih upisa dezinfekcije (i lovišta) uz sigurnosnu kopiju – glavni admin.
 
