@@ -7,8 +7,11 @@ if ($ime === '' || !is_file($dat)) {
     exit;
 }
 $k = korisnik();
-$dozvoljeno = str_starts_with($ime, 'oglas-') || $ime === basename((string) postavka('Udruga.Logo'));
-if (!$dozvoljeno) {
+$dozvoljeno = str_starts_with($ime, 'oglas-') || str_starts_with($ime, 'vrsta-') || $ime === basename((string) postavka('Udruga.Logo'));
+if (!$dozvoljeno && str_starts_with($ime, 'naprava-')) {
+    $n = red('SELECT SekcijaId FROM RevirNaprave WHERE Foto=?', [$ime]);
+    $dozvoljeno = $n && revir_moze_vidjeti($n['SekcijaId'] !== null ? (int) $n['SekcijaId'] : null);
+} elseif (!$dozvoljeno) {
     $c = red('SELECT Id, SekcijaId FROM Clanovi WHERE FotoDatoteka=?', [$ime]);
     if ($c) {
         $dozvoljeno = ($k['ClanId'] === (int) $c['Id']) || (ima(P_CLANOVI_CITAJ) && u_opsegu($c));

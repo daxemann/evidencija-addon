@@ -1,3 +1,8 @@
+## 1.8.0
+- Novo: **Lovište** – karta lovišta (granice iz KML-a), lovne naprave sa sličicama (odabir dodirom, uvoz fotografija s GPS-om),
+  zauzimanje čeke (i za gosta), automatsko oslobađanje u 03:00, obavijesti lovočuvarima sekcije, Danas u lovištu, lovački dnevnik.
+- Dezinfekcija: QR oznaka za ispis bez web adrese.
+
 ## 1.7.3
 - Tolerancija GPS-a najviše 1000 m izvan radijusa.
 
