@@ -1,3 +1,6 @@
+## 1.12.1
+- Demo: ključ vlasnika izvan baze (u add-onu demo je isključen).
+
 ## 1.12.0
 - Demo način za javnu probnu instalaciju (u add-onu isključen – ne mijenja ništa).
 
