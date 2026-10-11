@@ -1,3 +1,7 @@
+## 1.16.3
+- Sustav → Podaci o udruzi: adresa, mjesto i OIB udruge (zaglavlja PDF-ova, izjava za inspekciju, uplatnica).
+- Neutralni primjeri u poljima.
+
 ## 1.16.1
 - Oglasnik: glavna slika uvijek u istom okviru 4:3.
 
