@@ -1,3 +1,6 @@
+## 1.17.0
+- Vodiči pasa: popis članova s lovačkim psom (potraga, ispiti), kontakt prema dijeljenju člana ili poruka u aplikaciji.
+
 ## 1.16.4
 - Lovački pas: broj rodne knjige, boja, dlaka, datum oštenja.
 
