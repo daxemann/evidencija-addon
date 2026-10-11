@@ -1,3 +1,7 @@
+## 1.18.0
+- Oglasnik lovaca: zajednički oglasnik svih udruga (Sustav → Oglasnik lovaca) – registracija udruge zahtjevom, prijava članova bez lozinke, pravila udruge (samo udruga / sve udruge), novo pravo „Oglasnik – moderacija“. Zadano isključeno.
+- Add-on: dodano PHP proširenje sodium.
+
 ## 1.17.0
 - Vodiči pasa: popis članova s lovačkim psom (potraga, ispiti), kontakt prema dijeljenju člana ili poruka u aplikaciji.
 
