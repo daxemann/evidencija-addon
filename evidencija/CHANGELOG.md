@@ -1,3 +1,7 @@
+## 1.11.0
+- Rad bez signala: stranica „📷 Skeniraj QR stanice“ (skener u aplikaciji, upisi na čekanju, spremljene stanice) – bez interneta se aplikacija otvara na njoj.
+- Slanje spremljenih upisa u pozadini (Android), brisanje spremljenih stranica pri promjeni korisnika / odjavi, upozorenje kad sat mobitela nije točan.
+
 ## 1.10.0
 - Ažuriranje iz aplikacije: glavni admin vidi novu verziju i ažurira jednim klikom (Sustav → Ažuriranje programa). Prije toga automatska kopija baze; add-on se ažurira preko Supervisora.
 
