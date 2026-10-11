@@ -1,3 +1,6 @@
+## 1.12.0
+- Demo način za javnu probnu instalaciju (u add-onu isključen – ne mijenja ništa).
+
 ## 1.11.1
 - Izvještaj radnih akcija: e-pošta samo odabranom primatelju s popisa; član dobiva samo svoje radne akcije i bodove, cijeli izvještaj samo uprava s pravom na izvještaje.
 
