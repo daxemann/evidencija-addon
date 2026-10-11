@@ -1,3 +1,7 @@
+## 1.13.0
+- Uplatnice HUB-3A s 2D kodom za članarinu (jednokratno ili po ratama): Sustav → Uplatnica (IBAN), član vidi samo svoju uplatnicu (skeniranje / pokazivanje na šalteru / ispis), blagajnik šalje odabranima ili svima.
+- Dvofaktorska prijava (Google Authenticator) obavezna za administratore.
+
 ## 1.12.3
 - Ispravak lažnog upozorenja „baza je javno dostupna“.
 
