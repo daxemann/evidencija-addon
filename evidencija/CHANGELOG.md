@@ -1,3 +1,6 @@
+## 1.15.1
+- Moj profil: član sam upisuje svoje lovačke pse i ispite.
+
 ## 1.15.0
 - Zajednički lov: član pri potvrdi dolaska označi psa; dan nakon lova radna akcija „Pas na lovu“ na čekanju.
 - Nova vrsta „Potraga s psom (krvni trag)“, bodovna lista za pse, radne akcije povezane sa psom.
