@@ -1,3 +1,7 @@
+## 1.15.0
+- Zajednički lov: član pri potvrdi dolaska označi psa; dan nakon lova radna akcija „Pas na lovu“ na čekanju.
+- Nova vrsta „Potraga s psom (krvni trag)“, bodovna lista za pse, radne akcije povezane sa psom.
+
 ## 1.14.0
 - Članovi → Lovački psi: psi, pasmina, ispiti; 1. siječnja automatski godišnji bodovi za psa (radna akcija na čekanju odobrenja).
 - Članovi → Podaci: registarske oznake vozila za knjigu dezinfekcije.
