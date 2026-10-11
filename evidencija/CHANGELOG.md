@@ -1,3 +1,6 @@
+## 1.16.1
+- Oglasnik: glavna slika uvijek u istom okviru 4:3.
+
 ## 1.16.0
 - Gmail čarobnjak za slanje e-pošte (lozinka aplikacije, proba prije spremanja) i razumljive greške pri slanju.
 
