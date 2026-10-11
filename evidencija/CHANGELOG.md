@@ -1,3 +1,6 @@
+## 1.18.2
+- Oglasnik lovaca: prijava i registracija rade usprkos zaštiti od botova na hostingu Oglasnika; Oglasnik se otvara u novoj kartici.
+
 ## 1.18.1
 - Oglasnik lovaca: ispravka povratnih poveznica iza Tailscale Funnela („Zahtjev nije poslan“).
 
