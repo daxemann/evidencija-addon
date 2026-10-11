@@ -1,3 +1,6 @@
+## 1.16.0
+- Gmail čarobnjak za slanje e-pošte (lozinka aplikacije, proba prije spremanja) i razumljive greške pri slanju.
+
 ## 1.15.3
 - Tekst kvačice psa: „radi potragu (krvni trag)“.
 
