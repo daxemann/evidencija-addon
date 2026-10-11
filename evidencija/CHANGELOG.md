@@ -1,3 +1,6 @@
+## 1.15.2
+- Pas: kvačica „radi potragu (krvni trag)“ za svaku pasminu.
+
 ## 1.15.1
 - Moj profil: član sam upisuje svoje lovačke pse i ispite.
 
