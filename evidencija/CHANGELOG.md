@@ -1,3 +1,7 @@
+## 1.14.0
+- Članovi → Lovački psi: psi, pasmina, ispiti; 1. siječnja automatski godišnji bodovi za psa (radna akcija na čekanju odobrenja).
+- Članovi → Podaci: registarske oznake vozila za knjigu dezinfekcije.
+
 ## 1.13.0
 - Uplatnice HUB-3A s 2D kodom za članarinu (jednokratno ili po ratama): Sustav → Uplatnica (IBAN), član vidi samo svoju uplatnicu (skeniranje / pokazivanje na šalteru / ispis), blagajnik šalje odabranima ili svima.
 - Dvofaktorska prijava (Google Authenticator) obavezna za administratore.
