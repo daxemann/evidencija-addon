@@ -1,3 +1,6 @@
+## 1.16.4
+- Lovački pas: broj rodne knjige, boja, dlaka, datum oštenja.
+
 ## 1.16.3
 - Sustav → Podaci o udruzi: adresa, mjesto i OIB udruge (zaglavlja PDF-ova, izjava za inspekciju, uplatnica).
 - Neutralni primjeri u poljima.
