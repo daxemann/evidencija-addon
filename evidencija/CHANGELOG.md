@@ -1,3 +1,6 @@
+## 1.11.1
+- Izvještaj radnih akcija: e-pošta samo odabranom primatelju s popisa; član dobiva samo svoje radne akcije i bodove, cijeli izvještaj samo uprava s pravom na izvještaje.
+
 ## 1.11.0
 - Rad bez signala: stranica „📷 Skeniraj QR stanice“ (skener u aplikaciji, upisi na čekanju, spremljene stanice) – bez interneta se aplikacija otvara na njoj.
 - Slanje spremljenih upisa u pozadini (Android), brisanje spremljenih stranica pri promjeni korisnika / odjavi, upozorenje kad sat mobitela nije točan.
