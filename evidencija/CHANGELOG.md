@@ -1,3 +1,6 @@
+## 1.15.3
+- Tekst kvačice psa: „radi potragu (krvni trag)“.
+
 ## 1.15.2
 - Pas: kvačica „radi potragu (krvni trag)“ za svaku pasminu.
 
