@@ -1,3 +1,6 @@
+## 1.12.3
+- Ispravak lažnog upozorenja „baza je javno dostupna“.
+
 ## 1.12.2
 - Interne pripreme; za korisnike nema promjena.
 
