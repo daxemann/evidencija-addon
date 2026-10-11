@@ -1,3 +1,6 @@
+## 1.18.1
+- Oglasnik lovaca: ispravka povratnih poveznica iza Tailscale Funnela („Zahtjev nije poslan“).
+
 ## 1.18.0
 - Oglasnik lovaca: zajednički oglasnik svih udruga (Sustav → Oglasnik lovaca) – registracija udruge zahtjevom, prijava članova bez lozinke, pravila udruge (samo udruga / sve udruge), novo pravo „Oglasnik – moderacija“. Zadano isključeno.
 - Add-on: dodano PHP proširenje sodium.
