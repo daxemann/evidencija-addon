@@ -1,0 +1,73 @@
+name: Sinkronizacija s programom
+
+# Kad u daxemann/lovacka-evidencija izađe novo izdanje (Release), add-on se automatski
+# ažurira: kopija programa u evidencija/app, verzija u config.yaml i zapis u CHANGELOG.md.
+# Nakon toga Home Assistant nudi ažuriranje add-ona (Postavke → Add-oni → Evidencija).
+on:
+  schedule:
+    - cron: '17,47 * * * *'   # svakih 30 minuta
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sinkronizacija
+  cancel-in-progress: false
+
+jobs:
+  sinkronizacija:
+    runs-on: ubuntu-latest
+    env:
+      PROGRAM: daxemann/lovacka-evidencija
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Zadnje izdanje programa
+        id: v
+        run: |
+          TAG=$(gh api "repos/$PROGRAM/releases/latest" --jq .tag_name)
+          NOVA="${TAG#v}"
+          STARA=$(sed -n 's/^version: "\(.*\)"$/\1/p' evidencija/config.yaml)
+          echo "Program: $NOVA · add-on: $STARA"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "nova=$NOVA" >> "$GITHUB_OUTPUT"
+          if [ "$(printf '%s\n%s\n' "$STARA" "$NOVA" | sort -V | tail -1)" = "$STARA" ]; then
+            echo "Add-on je ažuran."
+            echo "preskoci=1" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Preuzmi program
+        if: steps.v.outputs.preskoci != '1'
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.PROGRAM }}
+          ref: ${{ steps.v.outputs.tag }}
+          path: _program
+
+      - name: Kopiraj program i povećaj verziju
+        if: steps.v.outputs.preskoci != '1'
+        run: |
+          NOVA="${{ steps.v.outputs.nova }}"
+          # cijela kopija programa iznova (obrisane datoteke nestaju), bez dijelova koji ne trebaju add-onu
+          rm -rf _program/.git _program/.github _program/docs _program/podaci _program/instaliraj.php
+          rm -rf evidencija/app
+          cp -a _program evidencija/app
+          rm -rf _program
+          sed -i "s/^version: \".*\"$/version: \"$NOVA\"/" evidencija/config.yaml
+          # bilješka iz CHANGELOG.md programa: prvi redak sekcije te verzije, bez oznaka
+          OPIS=$(awk -v v="## $NOVA" 'index($0, v)==1 {u=1; next} u && /^## / {exit} u && /^- / {print; exit}' evidencija/app/CHANGELOG.md \
+                 | sed -e 's/\*\*//g' -e 's/^- //' | cut -c1-200)
+          [ -n "$OPIS" ] || OPIS="Nova verzija programa."
+          { printf '## %s\n- %s\n\n' "$NOVA" "$OPIS"; cat evidencija/CHANGELOG.md; } > /tmp/cl && mv /tmp/cl evidencija/CHANGELOG.md
+          git status --short | head -30
+
+      - name: Spremi (commit)
+        if: steps.v.outputs.preskoci != '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "${{ steps.v.outputs.nova }} (automatski iz ${{ env.PROGRAM }})"
+          git push
