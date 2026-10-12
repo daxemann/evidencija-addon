@@ -1,3 +1,6 @@
+## 1.22.0
+- 📢 Obavijesti s obaveznom potvrdom čitanja (Članovi → Obavijesti, i na vrhu stranice Poruke).
+
 ## 1.21.4
 - Fotografije se smanjuju prije slanja; zaštita poslužitelja od prevelikih slika.
 
