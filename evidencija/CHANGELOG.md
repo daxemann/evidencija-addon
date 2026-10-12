@@ -1,3 +1,6 @@
+## 1.19.1
+- Izbornik: ikone uz sve stavke; „Statut i pravilnici“ ispod oglasa.
+
 ## 1.19.0
 - Statut i pravilnici: dokumenti udruge (tekst, PDF, fotografije papira) za sve članove, uređuje administrator (Sustav → Statut i pravilnici).
 
