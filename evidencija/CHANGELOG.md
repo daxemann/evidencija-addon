@@ -1,3 +1,6 @@
+## 1.21.1
+- Pomoć i kontakt: dobrovoljna podrška razvoju putem PayPala.
+
 ## 1.21.0
 - Inventura po sekcijama: grupiranje i filtar (sve / cijela udruga / sekcija), ispis PDF-a za sve, sekciju, jednu ili odabrane mape.
 
