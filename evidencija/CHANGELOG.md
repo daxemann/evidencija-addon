@@ -1,3 +1,6 @@
+## 1.21.0
+- Inventura po sekcijama: grupiranje i filtar (sve / cijela udruga / sekcija), ispis PDF-a za sve, sekciju, jednu ili odabrane mape.
+
 ## 1.20.1
 - Inventura: odvojena prava „Inventura – pregled“ (samo gledanje i PDF) i „Inventura – uređivanje“.
 
