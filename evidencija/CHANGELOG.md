@@ -1,3 +1,6 @@
+## 1.21.3
+- Početna: bez gumba Inventura (samo u izborniku).
+
 ## 1.21.2
 - Pomoć i kontakt: podrška razvoju samo gumbom PayPal.
 
