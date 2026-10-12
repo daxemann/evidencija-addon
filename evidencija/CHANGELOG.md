@@ -1,3 +1,6 @@
+## 1.21.4
+- Fotografije se smanjuju prije slanja; zaštita poslužitelja od prevelikih slika.
+
 ## 1.21.3
 - Početna: bez gumba Inventura (samo u izborniku).
 
