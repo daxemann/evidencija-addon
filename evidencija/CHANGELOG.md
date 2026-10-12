@@ -1,3 +1,6 @@
+## 1.19.0
+- Statut i pravilnici: dokumenti udruge (tekst, PDF, fotografije papira) za sve članove, uređuje administrator (Sustav → Statut i pravilnici).
+
 ## 1.18.2
 - Oglasnik lovaca: prijava i registracija rade usprkos zaštiti od botova na hostingu Oglasnika; Oglasnik se otvara u novoj kartici.
 
