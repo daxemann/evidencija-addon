@@ -1,3 +1,9 @@
+## 1.20.1
+- Inventura: odvojena prava „Inventura – pregled“ (samo gledanje i PDF) i „Inventura – uređivanje“.
+
+## 1.20.0
+- 📦 Inventura: mape (dom, hranilišta, oprema…) po udruzi ili sekciji, stavke „treba“ / „stvarno“, manjak crveno / višak zeleno, PDF lista za popis s praznim stupcem.
+
 ## 1.19.1
 - Izbornik: ikone uz sve stavke; „Statut i pravilnici“ ispod oglasa.
 
