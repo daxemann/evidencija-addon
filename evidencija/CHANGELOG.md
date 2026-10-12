@@ -1,3 +1,6 @@
+## 1.21.2
+- Pomoć i kontakt: podrška razvoju samo gumbom PayPal.
+
 ## 1.21.1
 - Pomoć i kontakt: dobrovoljna podrška razvoju putem PayPala.
 
