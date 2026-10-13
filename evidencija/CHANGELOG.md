@@ -1,3 +1,6 @@
+## 1.23.0
+- 📖 Upute za korištenje (izbornik Program): kratke upute za svaki dio programa – prvi koraci, Moje, Kalendar, upis dezinfekcije, Lovište, Imenik/Poruke/Oglasnik, česta pitanja.
+
 ## 1.22.0
 - 📢 Obavijesti s obaveznom potvrdom čitanja (Članovi → Obavijesti, i na vrhu stranice Poruke).
 
