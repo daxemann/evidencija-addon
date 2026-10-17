@@ -1,3 +1,6 @@
+## 1.24.0
+- 🔧 Kvarovi na lovnim napravama: na karti lovišta dodir na napravu → Prijavi kvar (opis, po želji fotografija s mobitela).
+
 ## 1.23.0
 - 📖 Upute za korištenje (izbornik Program): kratke upute za svaki dio programa – prvi koraci, Moje, Kalendar, upis dezinfekcije, Lovište, Imenik/Poruke/Oglasnik, česta pitanja.
 
