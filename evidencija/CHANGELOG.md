@@ -1,3 +1,6 @@
+## 1.27.2
+- Ispravka: u Uloge i prava dodan stupac Grupni lov – organizacija.
+
 ## 1.27.1
 - SOS u grupnom lovu stiže svima koji su u lovu: organizatoru, Lovniku na licu mjesta i svim sudionicima; „Idem pomoći“.
 
