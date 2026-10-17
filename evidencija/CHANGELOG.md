@@ -1,3 +1,6 @@
+## 1.28.0
+- 🏡 Lovački domovi (novo u izborniku): domovi za cijelu udrugu ili za sekciju (sekcije i ovdje odvojene – dom sekcije vide i rezerviraju samo njezini članovi).
+
 ## 1.27.2
 - Ispravka: u Uloge i prava dodan stupac Grupni lov – organizacija.
 
