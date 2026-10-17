@@ -1,3 +1,9 @@
+## 1.27.1
+- SOS u grupnom lovu stiže svima koji su u lovu: organizatoru, Lovniku na licu mjesta i svim sudionicima; „Idem pomoći“.
+
+## 1.27.0
+- 🎯 Grupni lov – karta uživo i SOS: poziv „Dolazim / Ne dolazim“, položaj sudionika uživo, gubitak signala, SOS, kraj lova u 23:00.
+
 ## 1.26.2
 - Bodove radnih akcija određuju samo postavke: u Novoj radnoj akciji (grupni unos) osnovni bodovi i bodovi dodatne opreme više se ne mogu upisivati – prikazuju se iz
 
