@@ -1,3 +1,6 @@
+## 1.26.2
+- Bodove radnih akcija određuju samo postavke: u Novoj radnoj akciji (grupni unos) osnovni bodovi i bodovi dodatne opreme više se ne mogu upisivati – prikazuju se iz
+
 ## 1.26.1
 - Ispravka: grupni unos radne akcije (Udruga → Nova radna akcija, i upis iz kalendara) više se ne odobrava sam – ide na odobrenje s predloženim bodovima (osnovni + oprema),
 
