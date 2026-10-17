@@ -1,3 +1,6 @@
+## 1.28.1
+- 📖 Upute za korištenje ažurirane na trenutno stanje: zajednički Oglasnik lovaca (ulaz bez lozinke, interno/javno, moderacija, pravila za oružje),
+
 ## 1.28.0
 - 🏡 Lovački domovi (novo u izborniku): domovi za cijelu udrugu ili za sekciju (sekcije i ovdje odvojene – dom sekcije vide i rezerviraju samo njezini članovi).
 
