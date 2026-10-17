@@ -1,3 +1,6 @@
+## 1.25.0
+- 🔔 Push obavijesti na mobitel (Moje → Push obavijesti): stižu i kad je aplikacija zatvorena – besplatno, preko push servisa preglednika (bez SMS-a, bez dodatne aplikacije).
+
 ## 1.24.0
 - 🔧 Kvarovi na lovnim napravama: na karti lovišta dodir na napravu → Prijavi kvar (opis, po želji fotografija s mobitela).
 
