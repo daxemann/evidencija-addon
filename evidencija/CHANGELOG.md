@@ -1,3 +1,6 @@
+## 1.26.1
+- Ispravka: grupni unos radne akcije (Udruga → Nova radna akcija, i upis iz kalendara) više se ne odobrava sam – ide na odobrenje s predloženim bodovima (osnovni + oprema),
+
 ## 1.26.0
 - 🧰 Dodatna oprema kod radnih akcija: u Sustav → Vrste radnih akcija uz svaku vrstu upisujete opremu s dodatnim bodovima (npr. Košnja: Traktor +5, Trimer +2, Motorna pila +3).
 
