@@ -1,3 +1,6 @@
+## 1.26.0
+- 🧰 Dodatna oprema kod radnih akcija: u Sustav → Vrste radnih akcija uz svaku vrstu upisujete opremu s dodatnim bodovima (npr. Košnja: Traktor +5, Trimer +2, Motorna pila +3).
+
 ## 1.25.0
 - 🔔 Push obavijesti na mobitel (Moje → Push obavijesti): stižu i kad je aplikacija zatvorena – besplatno, preko push servisa preglednika (bez SMS-a, bez dodatne aplikacije).
 
