@@ -1,3 +1,6 @@
+## 1.29.0
+- 🪪 Članska iskaznica s QR kodom (format bankovne kartice 85,6 × 54 mm): logo i naziv udruge, fotografija, ime i prezime, sekcija, „član od“ i QR kod – sve na jednoj strani.
+
 ## 1.28.1
 - 📖 Upute za korištenje ažurirane na trenutno stanje: zajednički Oglasnik lovaca (ulaz bez lozinke, interno/javno, moderacija, pravila za oružje),
 
