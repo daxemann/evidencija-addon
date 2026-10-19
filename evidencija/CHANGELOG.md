@@ -1,3 +1,6 @@
+## 1.33.1
+- 🏷️ Popusti – novo pravo „Popusti u trgovinama – uređivanje“ (Sustav → Uloge i prava, stupac *Popusti trgovine*): trgovine dodaje i uređuje samo tko ima to pravo.
+
 ## 1.33.0
 - 🏷️ Popusti u trgovinama (novi modul): trgovine koje članovima udruge daju popust – administrator ih dodaje jednu po jednu (+ Nova trgovina:
 
