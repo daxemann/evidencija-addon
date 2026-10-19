@@ -1,3 +1,6 @@
+## 1.30.2
+- 🦌 Logo programa Lovačka Evidencija (odvojeno od loga udruge): dno izbornika (s verzijom, vodi na Pomoć), ispod prijave, stranica Pomoć i kontakt, banner na GitHubu.
+
 ## 1.30.1
 - ← Sustav gumb na svim stranicama Sustava (Podaci o udruzi, Korisnici, Uloge, Kopije …) i na postavkama modula otvorenim iz Sustava (vrste radnih akcija, postavke lovišta, stanice dezinfekcije).
 
