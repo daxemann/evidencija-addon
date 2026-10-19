@@ -1,3 +1,6 @@
+## 1.34.2
+- Sigurnija nadogradnja baze: kad nakon ažuriranja više članova istovremeno otvori aplikaciju, nadogradnju baze sada radi samo jedan – ostali kratko pričekaju.
+
 ## 1.34.1
 - Popusti u trgovinama u demo verziji (primjeri trgovina, bez Oglasnika lovaca).
 
