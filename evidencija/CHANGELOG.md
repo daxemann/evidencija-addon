@@ -1,3 +1,6 @@
+## 1.34.1
+- Popusti u trgovinama u demo verziji (primjeri trgovina, bez Oglasnika lovaca).
+
 ## 1.34.0
 - 🏷️ Popusti u trgovinama – zajednički za sve udruge (kao Oglasnik lovaca): trgovine su na poslužitelju Oglasnika, pa lovci svih udruga vide iste popuste.
 
