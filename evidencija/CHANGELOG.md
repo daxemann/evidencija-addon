@@ -1,3 +1,6 @@
+## 1.34.0
+- 🏷️ Popusti u trgovinama – zajednički za sve udruge (kao Oglasnik lovaca): trgovine su na poslužitelju Oglasnika, pa lovci svih udruga vide iste popuste.
+
 ## 1.33.1
 - 🏷️ Popusti – novo pravo „Popusti u trgovinama – uređivanje“ (Sustav → Uloge i prava, stupac *Popusti trgovine*): trgovine dodaje i uređuje samo tko ima to pravo.
 
