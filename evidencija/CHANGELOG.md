@@ -1,3 +1,6 @@
+## 1.33.0
+- 🏷️ Popusti u trgovinama (novi modul): trgovine koje članovima udruge daju popust – administrator ih dodaje jednu po jednu (+ Nova trgovina:
+
 ## 1.31.0
 - 🐕 Što pas radi (umjesto samo „radi krvni trag“): kod svakog psa kvačice – 🩸 potraga (krvni trag), 📯 pogon (gonič), 🐇 lov na sitnu divljač,
 
