@@ -1,3 +1,6 @@
+## 1.29.2
+- Grupni lov – karta: u popisu desno samo tko je u lovu (dolazi, na karti, SOS) i tko je 📋 na popisu sudionika (skeniran / ručno upisan).
+
 ## 1.29.1
 - 🗑 Brisanje završenih grupnih lovova: gumb uz svaki završeni lov, u detalju lova, i Obriši sve završene (s popisima sudionika).
 
