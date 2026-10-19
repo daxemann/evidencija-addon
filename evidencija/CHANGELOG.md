@@ -1,3 +1,6 @@
+## 1.30.0
+- ⚙️ Sustav na jednom mjestu: u izborniku umjesto duge liste samo ⚙️ Sustav – otvara pregled u karticama po skupinama
+
 ## 1.29.2
 - Grupni lov – karta: u popisu desno samo tko je u lovu (dolazi, na karti, SOS) i tko je 📋 na popisu sudionika (skeniran / ručno upisan).
 
