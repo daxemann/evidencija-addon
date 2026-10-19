@@ -1,3 +1,6 @@
+## 1.31.0
+- 🐕 Što pas radi (umjesto samo „radi krvni trag“): kod svakog psa kvačice – 🩸 potraga (krvni trag), 📯 pogon (gonič), 🐇 lov na sitnu divljač,
+
 ## 1.30.2
 - 🦌 Logo programa Lovačka Evidencija (odvojeno od loga udruge): dno izbornika (s verzijom, vodi na Pomoć), ispod prijave, stranica Pomoć i kontakt, banner na GitHubu.
 
