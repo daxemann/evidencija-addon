@@ -1,3 +1,6 @@
+## 1.35.1
+- Tražilice isključene: Google, Bing i ostale tražilice više ne prikazuju vašu evidenciju u rezultatima pretrage (ni stranicu za prijavu, ni PDF-ove, slike ili kalendar).
+
 ## 1.35.0
 - 🔒 Šifrirane sigurnosne kopije: novo u *Sustav → Sigurnosne kopije* – lozinka kopije. Svaka kopija koja se preuzima (kompletna i kopija baze) šifrirana je njome (AES-256 ZIP, otvara se i 7-Zip
 
