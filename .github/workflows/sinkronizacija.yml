@@ -51,7 +51,7 @@ jobs:
         run: |
           NOVA="${{ steps.v.outputs.nova }}"
           # cijela kopija programa iznova (obrisane datoteke nestaju), bez dijelova koji ne trebaju add-onu
-          rm -rf _program/.git _program/.github _program/docs _program/podaci _program/instaliraj.php
+          rm -rf _program/.git _program/.github _program/docs _program/podaci _program/instaliraj.php _program/alati
           rm -rf evidencija/app
           cp -a _program evidencija/app
           rm -rf _program
