@@ -1,3 +1,6 @@
+## 1.37.1
+- „Grupni lov“ je sada „Skupni lov“ – u izborniku, pozivima, push obavijestima, pravima, modulima, popisu sudionika, PDF-u i uputama.
+
 ## 1.37.0
 - Ista početna za sve: lovnik, lovočuvar, tajnik, blagajnik i ostali s pravima gore imaju iste velike gumbe kao lovci (📷 Skeniraj QR, 🗺️ Karta lovišta, 🌲 Danas u lovištu),
 
