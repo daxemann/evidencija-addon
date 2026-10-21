@@ -1,3 +1,6 @@
+## 1.45.0
+- ⚙️ Sustav → 🏠 Početna stranica: administrator za svaku ulogu (i za članove bez uloge) kvačicama bira što se vidi na početnoj, a strelicama redoslijed.
+
 ## 1.44.0
 - Kalendar: vrsta termina „Zajednički lov“ sada se zove „Skupni lov“ (postojeći termini preimenovani).
 
