@@ -1,3 +1,6 @@
+## 1.46.3
+- Sigurnosno upozorenje (PHP2Shell): administratori na početnoj vide upozorenje ako poslužitelj radi na ranjivoj verziji PHP-a (CVE-2026-109618, CVE-2026-109619) – s objašnjenjem da PHP mora ažuri
+
 ## 1.46.2.1
 - Sigurnost: PHP 8.3.36 (službena slika) – ispravak PHP2Shell (CVE-2026-109618, CVE-2026-109619); session.upload_progress isključen.
 
