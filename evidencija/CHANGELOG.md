@@ -1,3 +1,6 @@
+## 1.43.0
+- Skupni lov – voditelj lova automatski je na popisu sudionika (oznaka *voditelj lova*).
+
 ## 1.42.0
 - Skupni lov – potpis članova na popisu:
 
