@@ -1,3 +1,6 @@
+## 1.36.2
+- ← Početna i na stranicama Karta lovišta, Danas u lovištu i Kvarovi na napravama.
+
 ## 1.36.1
 - Ispravak – Imenik: lovci bez posebnih prava sada vide fotografije drugih članova (prije prazna slika / „slika nije pronađena“).
 
