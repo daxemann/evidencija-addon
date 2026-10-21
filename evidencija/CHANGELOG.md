@@ -1,3 +1,6 @@
+## 1.39.0
+- Oružni listovi kod člana: Članovi → član → kartica *Podaci* → Oružni listovi – neograničeno upisa (broj + oružje, opis nije obavezan).
+
 ## 1.38.0
 - 📷 Mobilna stanica – upis skeniranjem članskih iskaznica (uz suglasnost lovne inspekcije):
 
