@@ -1,3 +1,6 @@
+## 1.36.0
+- Nova početna za lovce: na vrhu veliki gumbi za ono što je u lovu važno – 📷 Skeniraj QR (dezinfekcija), 🗺️ Karta lovišta i 🌲 Danas u lovištu.
+
 ## 1.35.1
 - Tražilice isključene: Google, Bing i ostale tražilice više ne prikazuju vašu evidenciju u rezultatima pretrage (ni stranicu za prijavu, ni PDF-ove, slike ili kalendar).
 
