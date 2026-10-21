@@ -1,3 +1,6 @@
+## 1.46.0
+- Početna – novi gumbi (odabir u *Sustav → Početna stranica*):
+
 ## 1.45.1
 - Početna – gumb 🌲 Danas u lovištu: broj na gumbu je sada koliko ih trenutno sjedi u lovištu – isti za sve (prije samo nepročitane obavijesti za nadzor, pa ga lovočuvar bez tog prava nije vi
 
