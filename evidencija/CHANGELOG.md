@@ -1,3 +1,6 @@
+## 1.46.2.1
+- Sigurnost: PHP 8.3.36 (službena slika) – ispravak PHP2Shell (CVE-2026-109618, CVE-2026-109619); session.upload_progress isključen.
+
 ## 1.46.2
 - Lovište strogo po sekcijama: Karta lovišta, Danas u lovištu, Kvarovi i Lovački dnevnik sada gledaju samo uloge koje daju pravo za lovište (nadzor, uređivanje, dnevnik) i njihove sekcije.
 
