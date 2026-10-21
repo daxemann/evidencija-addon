@@ -1,3 +1,6 @@
+## 1.42.0
+- Skupni lov – potpis članova na popisu:
+
 ## 1.40.0
 - ✍ Osobni potpis: *Moj profil → ✍ Moj potpis* – svaki funkcionar potpiše se prstom (ili fotografija potpisa) i sam ga može obrisati; nitko drugi ga ne postavlja.
 
