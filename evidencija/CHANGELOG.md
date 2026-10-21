@@ -1,3 +1,6 @@
+## 1.38.0
+- 📷 Mobilna stanica – upis skeniranjem članskih iskaznica (uz suglasnost lovne inspekcije):
+
 ## 1.37.1
 - „Grupni lov“ je sada „Skupni lov“ – u izborniku, pozivima, push obavijestima, pravima, modulima, popisu sudionika, PDF-u i uputama.
 
