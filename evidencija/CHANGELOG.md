@@ -1,3 +1,6 @@
+## 1.46.2
+- Lovište strogo po sekcijama: Karta lovišta, Danas u lovištu, Kvarovi i Lovački dnevnik sada gledaju samo uloge koje daju pravo za lovište (nadzor, uređivanje, dnevnik) i njihove sekcije.
+
 ## 1.46.1
 - Iskaznice (PDF A4, 10 po stranici): razmak između iskaznica – 6 mm lijevo/desno i 3,5 mm gore/dolje – lakše rezanje nakon ispisa (prije su se dodirivale).
 
