@@ -1,3 +1,6 @@
+## 1.37.0
+- Ista početna za sve: lovnik, lovočuvar, tajnik, blagajnik i ostali s pravima gore imaju iste velike gumbe kao lovci (📷 Skeniraj QR, 🗺️ Karta lovišta, 🌲 Danas u lovištu),
+
 ## 1.36.2
 - ← Početna i na stranicama Karta lovišta, Danas u lovištu i Kvarovi na napravama.
 
