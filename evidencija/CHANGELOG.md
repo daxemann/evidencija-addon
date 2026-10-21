@@ -1,3 +1,6 @@
+## 1.44.0
+- Kalendar: vrsta termina „Zajednički lov“ sada se zove „Skupni lov“ (postojeći termini preimenovani).
+
 ## 1.43.0
 - Skupni lov – voditelj lova automatski je na popisu sudionika (oznaka *voditelj lova*).
 
