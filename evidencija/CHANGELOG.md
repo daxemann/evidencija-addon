@@ -1,3 +1,6 @@
+## 1.40.0
+- ✍ Osobni potpis: *Moj profil → ✍ Moj potpis* – svaki funkcionar potpiše se prstom (ili fotografija potpisa) i sam ga može obrisati; nitko drugi ga ne postavlja.
+
 ## 1.39.0
 - Oružni listovi kod člana: Članovi → član → kartica *Podaci* → Oružni listovi – neograničeno upisa (broj + oružje, opis nije obavezan).
 
