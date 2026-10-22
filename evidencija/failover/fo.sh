@@ -34,7 +34,7 @@ EV_HOST=$(opt '.tailscale_hostname'); [ -z "$EV_HOST" ] && EV_HOST=evidencija
 
 mkdir -p "$FO" "$RUN" /run/evidencija /var/run/tailscale
 
-log() { echo "[failover] $*"; }
+log() { if [ -w /proc/1/fd/1 ]; then echo "[failover] $*" >> /proc/1/fd/1; else echo "[failover] $*" >&2; fi; }
 jetzt() { date +%s; }
 uloga() { cat "$FO/uloga" 2>/dev/null || echo ""; }
 postavi_ulogu() {
@@ -239,7 +239,9 @@ cmd_otpusti()  { ev_stop; postavi_ulogu pripravan; touch "$WARTUNG"; log "Überg
 cmd_vrati()    { postavi_ulogu aktivan; ev_start && rm -f "$WARTUNG"; }
 cmd_preuzmi_od_mene() { # Partner bittet: übernimm du (wird asynchron ausgeführt)
   [ "$(uloga)" = pripravan ] || return 1
-  ( flock -o "$LOCK" bash -c '/failover/fo.sh planirana_predaja' ) >/proc/1/fd/1 2>&1 &
+  razvoj_lokal && return 1
+  flock -n "$LOCK" true || { log "Wechsel-Anfrage abgelehnt: gerade beschäftigt"; return 1; }
+  ( flock -o -n "$LOCK" /failover/fo.sh planirana_predaja ) >/dev/null 2>&1 &
 }
 cmd_najava() { echo $(( $(jetzt) + GRACE_GEPLANT )) > "$RUN/najava_do"; log "Partner kündigt Neustart an"; }
 
@@ -298,7 +300,7 @@ dashboard() {
   if [ "$e" = off ] && razvoj_lokal; then rm -f "$FO/razvoj"; log "Entwicklung AUS – Versionsvergleich"; jetzt > "$RUN/sync_jetzt"; fi
   if taste input_button.evidencija_wechseln; then
     if [ "$(uloga)" = pripravan ]; then
-      ( flock -o "$LOCK" /failover/fo.sh planirana_predaja ) &
+      ( flock -o -n "$LOCK" /failover/fo.sh planirana_predaja || log "Wechsel nicht gestartet: gerade beschäftigt" ) &
     else
       pc POST /predaja/preuzmi_od_mene 30 >/dev/null && log "Partner übernimmt jetzt" || melde "Evidencija" "Wechsel nicht möglich – Partner nicht bereit."
     fi
@@ -341,7 +343,8 @@ daemon() {
   fi
 
   local bez_partnera bez_adrese zadnji_sat=""
-  bez_partnera=$(jetzt); bez_adrese=$(jetzt)
+  # bez_adrese=0: beim Start sofort prüfen, ob die Adresse fehlt (z. B. nach abgebrochenem Wechsel)
+  bez_partnera=$(jetzt); bez_adrese=0
   while true; do
     ctl_laeuft && ctl_serve
     if partner_status; then bez_partnera=$(jetzt); fi
@@ -373,6 +376,18 @@ daemon() {
           fi
         else
           echo "$(pj .verzija)" > "$RUN/sync_fehler"; rm -f "$RUN/sync_jetzt"
+        fi
+      fi
+      # --- beide Standby (z. B. abgebrochener Wechsel): wer zuletzt aktiv war, hat die neuesten Daten
+      if ! razvoj_aktiv && partner_frisch && [ "$(pj .uloga)" = pripravan ] && [ $(( $(jetzt) - bez_adrese )) -ge 120 ] \
+         && ctl_laeuft && ! ev_online_irgendwo; then
+        local moj tvoj; moj=$(cat "$FO/aktivan_od" 2>/dev/null || echo 0); tvoj=$(pj .aktivan_od); tvoj=${tvoj:-0}
+        if [ "$moj" -gt "$tvoj" ] || { [ "$moj" -eq "$tvoj" ] && [[ "$LOK" < "$PARTNER_LOK" ]]; }; then
+          log "Beide Server im Standby – $LOK war zuletzt aktiv und übernimmt"
+          if ( flock -o "$LOCK" /failover/fo.sh preuzmi ); then
+            melde "Evidencija: $LOK hat übernommen" "Beide Server standen auf Standby; $LOK (zuletzt aktiv) läuft jetzt."
+          fi
+          bez_partnera=$(jetzt); bez_adrese=$(jetzt)
         fi
       fi
       # --- Übernahme bei Ausfall

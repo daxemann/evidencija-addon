@@ -1,3 +1,6 @@
+## 1.53.0.3
+- Failover: stehen beide Server auf Standby, übernimmt der zuletzt aktive; alte Wechsel-Anfragen werden nicht nachgeholt; alle Meldungen im Log.
+
 ## 1.53.0.2
 - Failover: Sperre wird nicht mehr an den Tailscale-Prozess vererbt (Sync/Wechsel hing danach).
 
