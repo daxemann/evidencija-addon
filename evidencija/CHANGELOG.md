@@ -1,3 +1,6 @@
+## 1.50.0
+- Broj po sekciji = sekcija voditelja: lov dobiva broj samo u sekciji onoga tko ga je pokrenuo – i kad je lov za sve sekcije (npr. *0001 (Lovna jedinica Bušetina)*), ne više broj u svakoj sekciji.
+
 ## 1.49.0
 - Broj skupnog lova po sekciji (*Sustav → Skupni lov – PDF → Broj po sekciji*): svaka sekcija broji svoje lovove u lovnoj godini (0001, 0002 …) – za udruge u kojima svaka sekcija ima svoje dop
 
