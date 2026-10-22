@@ -1,3 +1,6 @@
+## 1.49.0
+- Broj skupnog lova po sekciji (*Sustav → Skupni lov – PDF → Broj po sekciji*): svaka sekcija broji svoje lovove u lovnoj godini (0001, 0002 …) – za udruge u kojima svaka sekcija ima svoje dop
+
 ## 1.48.0
 - Broj skupnog lova: svaki lov ima redni broj u lovnoj godini (od 1. travnja: 0001, 0002 …). Obrišete li lov, brojevi se slažu bez rupe. Broj se vidi u popisu završenih lovova.
 
