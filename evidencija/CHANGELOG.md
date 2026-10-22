@@ -1,3 +1,6 @@
+## 1.48.0
+- Broj skupnog lova: svaki lov ima redni broj u lovnoj godini (od 1. travnja: 0001, 0002 …). Obrišete li lov, brojevi se slažu bez rupe. Broj se vidi u popisu završenih lovova.
+
 ## 1.47.0
 - Skupni lov iz kalendara – bez dvostrukog poziva: termin vrste *Skupni lov* na dan lova ima gumb 🎯 Počni skupni lov (voditelj s pravom Skupni lov).
 
