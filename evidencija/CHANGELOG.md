@@ -1,3 +1,6 @@
+## 1.52.1
+- Naknadni upis – sken iskaznice: ispravljena provjera iskaznice (prije je uvijek javljalo „Provjera nije uspjela“).
+
 ## 1.52.0
 - Dezinfekcija – naknadni upis: uz odabir člana gumb 📷 Iskaznica – skenirate člansku iskaznicu (QR) i član se odabere sam (s reg. oznakom). Odabir s popisa ostaje kao i prije.
 
