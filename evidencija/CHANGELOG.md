@@ -1,3 +1,6 @@
+## 1.47.0
+- Skupni lov iz kalendara – bez dvostrukog poziva: termin vrste *Skupni lov* na dan lova ima gumb 🎯 Počni skupni lov (voditelj s pravom Skupni lov).
+
 ## 1.46.3
 - Sigurnosno upozorenje (PHP2Shell): administratori na početnoj vide upozorenje ako poslužitelj radi na ranjivoj verziji PHP-a (CVE-2026-109618, CVE-2026-109619) – s objašnjenjem da PHP mora ažuri
 
