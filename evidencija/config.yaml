@@ -1,5 +1,5 @@
 name: Evidencija (lovačka udruga)
-version: "1.53.0"
+version: "1.53.0.1"
 slug: evidencija
 description: Evidencija članova, radnih akcija, članarine i oglasnik za lovačke udruge
 url: https://github.com/daxemann/evidencija-addon
@@ -11,6 +11,7 @@ boot: auto
 init: false
 hassio_api: true
 hassio_role: manager
+homeassistant_api: true
 ports:
   5080/tcp: 5080
 ports_description:
@@ -21,7 +22,17 @@ options:
   tailscale: true
   tailscale_hostname: evidencija
   tailscale_authkey: ""
+  failover: false
+  failover_lokacija: ""
+  failover_partner: ""
+  failover_pocetna_uloga: aktivan
+  failover_obavijest: ""
 schema:
   tailscale: bool
   tailscale_hostname: str
   tailscale_authkey: password?
+  failover: bool
+  failover_lokacija: str?
+  failover_partner: str?
+  failover_pocetna_uloga: list(aktivan|pripravan)
+  failover_obavijest: str?

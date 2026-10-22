@@ -7,17 +7,31 @@ mkdir -p /data/Podaci /data/tailscale /var/run/tailscale
 TS=$(opt '.tailscale'); HOSTNAME_TS=$(opt '.tailscale_hostname'); KEY=$(opt '.tailscale_authkey')
 [ -z "$HOSTNAME_TS" ] && HOSTNAME_TS=evidencija
 
+FAILOVER=""
 APP_PID=""
 TS_PID=""
 zaustavi() {
   echo "[evidencija] zaustavljanje…"
   [ -n "$APP_PID" ] && kill -TERM "$APP_PID" 2>/dev/null && wait "$APP_PID" 2>/dev/null
+  if [ "$FAILOVER" = "true" ]; then
+    /failover/fo.sh zaustavljanje 2>&1 | sed -u 's/^/[failover] /'
+    pkill -TERM tailscaled 2>/dev/null
+  fi
   [ -n "$TS_PID" ] && kill -TERM "$TS_PID" 2>/dev/null
   exit 0
 }
 trap zaustavi TERM INT
 
-if [ "$TS" = "true" ]; then
+FAILOVER=$(opt '.failover')
+if [ "$FAILOVER" = "true" ]; then
+  # Ausfall-Server: Tailscale (Evidencija-Adresse + Steuerknoten) steuert /failover/fo.sh
+  echo "[failover] aktiviert – Tailscale wird vom Failover-Dienst gesteuert"
+  mkdir -p /run/evidencija /run/fo
+  touch /run/evidencija/wartung
+  php -S 127.0.0.1:5081 /failover/api.php >/tmp/fo-api.log 2>&1 &
+  /failover/fo.sh daemon &
+  TS_PID=$!
+elif [ "$TS" = "true" ]; then
   echo "[tailscale] pokretanje (hostname: $HOSTNAME_TS)"
   tailscaled --tun=userspace-networking --statedir=/data/tailscale \
              --socket=/var/run/tailscale/tailscaled.sock --port=0 >/tmp/tailscaled.log 2>&1 &

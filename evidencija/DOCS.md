@@ -24,3 +24,26 @@ Aplikacija dodatno radi dnevnu kopiju baze (zadnjih 30). Pri nadogradnji se baza
 | tailscale_authkey | umjesto prijave poveznicom (nije obavezno) |
 
 Aplikacija je PHP verzija programa [lovacka-evidencija](https://github.com/daxemann/lovacka-evidencija) (Apache + PHP 8.3).
+
+## Ausfall-Server (Failover) – optional
+
+Zwei Home-Assistant-Server (z. B. HR und DE) teilen sich **dieselbe Adresse**. Immer nur einer ist online.
+Der andere ist Standby, holt 3× täglich (03, 11, 19 Uhr) eine Kopie und übernimmt, wenn der aktive
+länger als 5 Minuten weg ist. Kommt der ausgefallene zurück, wird er Standby („wer läuft, bleibt“).
+
+| Option | HR | DE |
+|---|---|---|
+| failover | true | true |
+| failover_lokacija | HR | DE |
+| failover_partner | evidencija-ctl-de | evidencija-ctl-hr |
+| failover_pocetna_uloga | aktivan | pripravan |
+
+Jeder Server bekommt zusätzlich einen Tailscale-**Steuerknoten** (`evidencija-ctl-…`); beim ersten Start
+erscheint im Log ein Anmeldelink. In der Tailscale-Konsole bei allen Knoten „Disable key expiry“ setzen.
+
+Dashboard-Helfer (optional, im HA des Admins): `input_boolean.evidencija_entwicklung`,
+`input_button.evidencija_wechseln`, `input_button.evidencija_sync_jetzt`, `input_button.evidencija_aktualisieren`.
+Sensoren: `sensor.evidencija_aktiver_server`, `sensor.evidencija_failover_status`,
+`sensor.evidencija_letzter_sync`, `binary_sensor.evidencija_partner_erreichbar`.
+
+Ohne `failover: true` ändert sich am Verhalten nichts.

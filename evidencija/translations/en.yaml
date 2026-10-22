@@ -8,5 +8,20 @@ configuration:
   tailscale_authkey:
     name: Tailscale auth key (nije obavezno)
     description: Umjesto prijave preko poveznice u zapisniku.
+  failover:
+    name: Ausfall-Server (Failover)
+    description: Zwei Home-Assistant-Standorte teilen sich eine Adresse. Nur für eigene Installationen mit zwei Servern.
+  failover_lokacija:
+    name: Standort (z. B. HR oder DE)
+    description: Kurzname dieses Servers.
+  failover_partner:
+    name: Partner-Steuerknoten
+    description: Tailscale-Name des Steuerknotens des anderen Servers, z. B. evidencija-ctl-de.
+  failover_pocetna_uloga:
+    name: Startrolle
+    description: aktivan = betreibt die Adresse, pripravan = Standby. Nur beim allerersten Start.
+  failover_obavijest:
+    name: Benachrichtigung
+    description: Notify-Dienst für Meldungen, z. B. notify.mobile_app_handy (leer = nur HA-Meldung).
 network:
   5080/tcp: Web sučelje u lokalnoj mreži

@@ -1,3 +1,6 @@
+## 1.53.0.1
+- Optional: Ausfall-Server (Failover) zwischen zwei Home-Assistant-Standorten unter derselben Adresse. Ohne Einschalten keine Änderung.
+
 ## 1.53.0
 - Početna – gumbi za sve stavke izbornika: u *Sustav → Početna stranica* uz postojeće blokove sada se može odabrati gumb za svaku stavku izbornika lijevo
 
