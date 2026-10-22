@@ -1,3 +1,6 @@
+## 1.51.1
+- Kvarovi: gumbi *Riješeni* i *Svi* (i odabir sekcije) sada rade – prije su uvijek ostajali na *Otvoreni*.
+
 ## 1.51.0
 - Završeni skupni lovovi: gumb 📝 Dodatni zapisnik s tekstom (umjesto same ikone) i novi gumb 📧 Pošalji.
 
