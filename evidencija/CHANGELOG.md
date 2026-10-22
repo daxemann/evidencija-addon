@@ -1,3 +1,6 @@
+## 1.53.1
+- Mobitel – gornja traka: *Odjava* je sada skroz lijevo, dalje od gumba izbornika ☰ – manje slučajnih odjava.
+
 ## 1.53.0.3
 - Failover: stehen beide Server auf Standby, übernimmt der zuletzt aktive; alte Wechsel-Anfragen werden nicht nachgeholt; alle Meldungen im Log.
 
