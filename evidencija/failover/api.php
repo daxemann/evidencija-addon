@@ -14,7 +14,7 @@ function antwort(int $kod, $daten): void
 
 function fo(string $befehl, bool $sperre = true): array
 {
-    $cmd = ($sperre ? 'flock -w 600 ' . LOCK . ' ' : '') . FO . ' ' . escapeshellarg($befehl) . ' 2>&1';
+    $cmd = ($sperre ? 'flock -o -w 600 ' . LOCK . ' ' : '') . FO . ' ' . escapeshellarg($befehl) . ' 2>&1';
     exec($cmd, $out, $rc);
     return [$rc, implode("\n", $out)];
 }

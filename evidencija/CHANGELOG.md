@@ -1,3 +1,6 @@
+## 1.53.0.2
+- Failover: Sperre wird nicht mehr an den Tailscale-Prozess vererbt (Sync/Wechsel hing danach).
+
 ## 1.53.0.1
 - Optional: Ausfall-Server (Failover) zwischen zwei Home-Assistant-Standorten unter derselben Adresse. Ohne Einschalten keine Änderung.
 

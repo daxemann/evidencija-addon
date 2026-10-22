@@ -239,7 +239,7 @@ cmd_otpusti()  { ev_stop; postavi_ulogu pripravan; touch "$WARTUNG"; log "Überg
 cmd_vrati()    { postavi_ulogu aktivan; ev_start && rm -f "$WARTUNG"; }
 cmd_preuzmi_od_mene() { # Partner bittet: übernimm du (wird asynchron ausgeführt)
   [ "$(uloga)" = pripravan ] || return 1
-  ( flock "$LOCK" bash -c '/failover/fo.sh planirana_predaja' ) >/proc/1/fd/1 2>&1 &
+  ( flock -o "$LOCK" bash -c '/failover/fo.sh planirana_predaja' ) >/proc/1/fd/1 2>&1 &
 }
 cmd_najava() { echo $(( $(jetzt) + GRACE_GEPLANT )) > "$RUN/najava_do"; log "Partner kündigt Neustart an"; }
 
@@ -298,7 +298,7 @@ dashboard() {
   if [ "$e" = off ] && razvoj_lokal; then rm -f "$FO/razvoj"; log "Entwicklung AUS – Versionsvergleich"; jetzt > "$RUN/sync_jetzt"; fi
   if taste input_button.evidencija_wechseln; then
     if [ "$(uloga)" = pripravan ]; then
-      ( flock "$LOCK" /failover/fo.sh planirana_predaja ) &
+      ( flock -o "$LOCK" /failover/fo.sh planirana_predaja ) &
     else
       pc POST /predaja/preuzmi_od_mene 30 >/dev/null && log "Partner übernimmt jetzt" || melde "Evidencija" "Wechsel nicht möglich – Partner nicht bereit."
     fi
@@ -351,7 +351,7 @@ daemon() {
       # beide aktiv? Wer später aktiv wurde, bleibt.
       if partner_frisch && [ "$(pj .uloga)" = aktivan ] && [ "$(pj .aktivan_od)" -gt "$(cat "$FO/aktivan_od" 2>/dev/null || echo 0)" ] 2>/dev/null; then
         log "Doppelt aktiv – Partner ist neuer, dieser Server geht in Standby"
-        ( flock "$LOCK" /failover/fo.sh otpusti ); touch "$FO/povratak"
+        ( flock -o "$LOCK" /failover/fo.sh otpusti ); touch "$FO/povratak"
       fi
       bez_adrese=$(jetzt)
     else
@@ -366,7 +366,7 @@ daemon() {
       if [ $faellig = 1 ] && ! razvoj_aktiv && partner_frisch && [ "$(pj .uloga)" = aktivan ]; then
         if [ "$(pj .verzija)" = "$(verzija)" ]; then
           log "Sync: Kopie von $PARTNER_LOK"
-          if ( flock "$LOCK" /failover/fo.sh povuci "$( [ -f "$FO/povratak" ] && echo 1 || echo 0)" ); then
+          if ( flock -o "$LOCK" /failover/fo.sh povuci "$( [ -f "$FO/povratak" ] && echo 1 || echo 0)" ); then
             rm -f "$FO/povratak" "$RUN/sync_jetzt"
           else
             [ -f "$RUN/sync_fehler" ] || echo "fehler" > "$RUN/sync_fehler"
@@ -382,7 +382,7 @@ daemon() {
       if ! razvoj_aktiv && [ $((t - bez_partnera)) -ge $grace ] && [ $((t - bez_adrese)) -ge $grace ] && ctl_laeuft; then
         if ! ev_online_irgendwo || [ $((t - bez_adrese)) -ge $GRACE_HART ]; then
           log "AUSFALL: $PARTNER_LOK seit $(( (t - bez_partnera) / 60 )) min weg – Übernahme"
-          if ( flock "$LOCK" /failover/fo.sh preuzmi ); then
+          if ( flock -o "$LOCK" /failover/fo.sh preuzmi ); then
             melde "Evidencija: $LOK hat übernommen" "$PARTNER_LOK ist ausgefallen. Evidencija läuft jetzt auf $LOK (Stand: $(cat "$FO/zadnja_sink" 2>/dev/null))."
           fi
           bez_partnera=$(jetzt); bez_adrese=$(jetzt)
