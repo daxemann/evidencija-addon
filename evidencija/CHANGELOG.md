@@ -1,3 +1,6 @@
+## 1.51.0
+- Završeni skupni lovovi: gumb 📝 Dodatni zapisnik s tekstom (umjesto same ikone) i novi gumb 📧 Pošalji.
+
 ## 1.50.0
 - Broj po sekciji = sekcija voditelja: lov dobiva broj samo u sekciji onoga tko ga je pokrenuo – i kad je lov za sve sekcije (npr. *0001 (Lovna jedinica Bušetina)*), ne više broj u svakoj sekciji.
 
