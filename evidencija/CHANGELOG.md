@@ -1,3 +1,6 @@
+## 1.53.0
+- Početna – gumbi za sve stavke izbornika: u *Sustav → Početna stranica* uz postojeće blokove sada se može odabrati gumb za svaku stavku izbornika lijevo
+
 ## 1.52.1
 - Naknadni upis – sken iskaznice: ispravljena provjera iskaznice (prije je uvijek javljalo „Provjera nije uspjela“).
 
