@@ -44,6 +44,7 @@ erscheint im Log ein Anmeldelink. In der Tailscale-Konsole bei allen Knoten „D
 Dashboard-Helfer (optional, im HA des Admins): `input_boolean.evidencija_entwicklung`,
 `input_button.evidencija_wechseln`, `input_button.evidencija_sync_jetzt`, `input_button.evidencija_aktualisieren`.
 Sensoren: `sensor.evidencija_aktiver_server`, `sensor.evidencija_failover_status`,
-`sensor.evidencija_letzter_sync`, `binary_sensor.evidencija_partner_erreichbar`.
+`sensor.evidencija_letzter_sync`, `binary_sensor.evidencija_partner_erreichbar`,
+`binary_sensor.evidencija_seite_erreichbar`, `sensor.evidencija_letzter_ausfall` (nur Info).
 
 Ohne `failover: true` ändert sich am Verhalten nichts.

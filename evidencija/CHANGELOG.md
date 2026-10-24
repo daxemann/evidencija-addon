@@ -1,3 +1,6 @@
+## 1.53.1.3
+- Failover: neue Info-Sensoren `binary_sensor.evidencija_seite_erreichbar` (öffentliche Seite alle 30 s geprüft, mit HTTP-Code/Antwortzeit) und `sensor.evidencija_letzter_ausfall` (von/bis/Dauer).
+
 ## 1.53.1.2
 - Failover: Neustart/Update des aktiven Servers – er bleibt aktiv, wenn der Partner Standby meldet (vorher hielt er seinen eigenen alten Knoten für den Partner und ging auf Standby).
 

@@ -287,6 +287,36 @@ objavi() {
     "{\"friendly_name\":\"Evidencija Partner ($PARTNER_LOK) erreichbar\",\"device_class\":\"connectivity\"}"
 }
 
+# Erreichbarkeit der öffentlichen Seite (so wie die Jäger sie sehen) – nur zur Info
+pruefe_seite() {
+  local a; a=$(cat "$FO/adresa" 2>/dev/null); [ -z "$a" ] && a=$(cat /data/javna_adresa 2>/dev/null)
+  [ -z "$a" ] && return 0
+  local r kod ms
+  r=$(curl -s -o /dev/null -w '%{http_code} %{time_total}' --max-time 15 "$a" 2>/dev/null); kod=${r%% *}
+  ms=$(awk -v t="${r##* }" 'BEGIN{printf "%d", t*1000}')
+  local ok=false; [ "$kod" != 000 ] && [ "$kod" -lt 500 ] 2>/dev/null && ok=true
+  local f="$FO/seite_aus_seit" t; t=$(date -Iseconds)
+  if $ok; then
+    if [ -f "$f" ]; then # Ausfall vorbei → festhalten
+      local von; von=$(cat "$f"); rm -f "$f"
+      local dauer=$(( ( $(date +%s) - $(date -d "$von" +%s) + 59 ) / 60 ))
+      jq -cn --arg von "$von" --arg bis "$t" --argjson d "$dauer" '{von:$von, bis:$bis, dauer_min:$d}' > "$FO/seite_letzter_ausfall"
+      log "Seite war nicht erreichbar: $von – $t (~$dauer min)"
+    fi
+  else
+    [ -f "$f" ] || echo "$t" > "$f"
+  fi
+  ha_state binary_sensor.evidencija_seite_erreichbar "$($ok && echo on || echo off)" "$(jq -cn \
+    --arg k "$kod" --argjson ms "${ms:-0}" --arg von "$LOK" --arg seit "$(cat "$f" 2>/dev/null)" \
+    '{friendly_name:"Evidencija Seite erreichbar", device_class:"connectivity", http_code:$k,
+      antwortzeit_ms:$ms, geprueft_von:$von, nicht_erreichbar_seit:$seit}')"
+  if [ -f "$FO/seite_letzter_ausfall" ]; then
+    local la; la=$(cat "$FO/seite_letzter_ausfall")
+    ha_state sensor.evidencija_letzter_ausfall "$(jq -r .von <<<"$la")" "$(jq -c \
+      '{friendly_name:"Evidencija letzter Ausfall", device_class:"timestamp", icon:"mdi:web-off", bis:.bis, dauer_min:.dauer_min}' <<<"$la")"
+  fi
+}
+
 # Tasten/Schalter im Dashboard (nur dort, wo die Helfer existieren)
 taste() { # taste entity -> 0 wenn neu gedrückt
   local v; v=$(ha_get "$1"); [ -z "$v" ] && return 1
@@ -415,6 +445,7 @@ daemon() {
 
     dashboard
     objavi
+    pruefe_seite
     sleep 30
   done
 }
