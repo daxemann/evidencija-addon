@@ -182,16 +182,17 @@ uvoz() { # uvoz datei.tgz [arhiviraj]
   fi
   php /failover/provjera.php "$n/evidencija.db" || { log "Import: Datenbank-Prüfung fehlgeschlagen"; rm -rf "$n"; return 1; }
   mv "$n/evidencija.db" "$n/Podaci/evidencija.db"
+  local staro=""
   if [ "$arh" = 1 ] && [ -d /data/Podaci ]; then
     mkdir -p "$FO/arhiva"; local ziel; ziel="$FO/arhiva/$(date +%Y%m%d-%H%M%S)"
-    mv /data/Podaci "$ziel"; log "Alter Stand archiviert: $ziel"
+    mv /data/Podaci "$ziel"; staro="$ziel"; log "Alter Stand archiviert: $ziel"
     ls -1d "$FO"/arhiva/* 2>/dev/null | head -n -2 | xargs -r rm -rf   # nur die letzten 2
   else
-    rm -rf "$FO/prethodno"; [ -d /data/Podaci ] && mv /data/Podaci "$FO/prethodno"
+    rm -rf "$FO/prethodno"; [ -d /data/Podaci ] && { mv /data/Podaci "$FO/prethodno"; staro="$FO/prethodno"; }
   fi
   mv "$n/Podaci" /data/Podaci
-  # Uploads/Kopien, die nicht übertragen werden, behalten
-  [ -d "$FO/prethodno/kopije" ] && [ ! -d /data/Podaci/kopije ] && cp -a "$FO/prethodno/kopije" /data/Podaci/
+  # Lokale Sicherungskopien (werden nicht übertragen) aus dem gerade ersetzten Stand behalten
+  [ -n "$staro" ] && [ -d "$staro/kopije" ] && [ ! -d /data/Podaci/kopije ] && cp -a "$staro/kopije" /data/Podaci/
   rm -rf "$FO/partner_ts"; [ -d "$n/tailscale" ] && mv "$n/tailscale" "$FO/partner_ts"
   [ -f "$n/javna_adresa" ] && cp "$n/javna_adresa" "$FO/adresa"
   chown -R www-data:www-data /data/Podaci

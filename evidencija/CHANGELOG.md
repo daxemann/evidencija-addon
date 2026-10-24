@@ -1,3 +1,6 @@
+## 1.53.1.1
+- Failover: beim geplanten Wechsel bleiben die lokalen Sicherungskopien (kopije) des aktuellen Stands erhalten (vorher wurde ein älterer Stand zurückgeholt).
+
 ## 1.53.1
 - Mobitel – gornja traka: *Odjava* je sada skroz lijevo, dalje od gumba izbornika ☰ – manje slučajnih odjava.
 
