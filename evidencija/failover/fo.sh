@@ -334,7 +334,9 @@ daemon() {
   if ctl_laeuft; then ctl_serve; partner_status; else log "WARNUNG: Steuerknoten nicht angemeldet – Anmeldelink im Log"; fi
 
   if [ "$(uloga)" = aktivan ]; then
-    if ctl_laeuft && { ev_online_irgendwo || { partner_frisch && [ "$(pj .uloga)" = aktivan ]; }; }; then
+    # Partner erreichbar → nur seine eigene Rolle zählt (der eigene alte Evidencija-Knoten
+    # wird nach einem Neustart noch minutenlang als „online“ gemeldet – gleiche Identität)
+    if ctl_laeuft && { if partner_frisch; then [ "$(pj .uloga)" = aktivan ]; else ev_online_irgendwo; fi; }; then
       log "Partner ist inzwischen aktiv – dieser Server wird Standby"
       postavi_ulogu pripravan; touch "$FO/povratak"
       melde "Evidencija: $LOK wieder online" "$LOK läuft als Standby, $PARTNER_LOK bleibt aktiv. Daten werden vollständig übernommen."

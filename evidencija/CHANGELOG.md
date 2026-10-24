@@ -1,3 +1,6 @@
+## 1.53.1.2
+- Failover: Neustart/Update des aktiven Servers – er bleibt aktiv, wenn der Partner Standby meldet (vorher hielt er seinen eigenen alten Knoten für den Partner und ging auf Standby).
+
 ## 1.53.1.1
 - Failover: beim geplanten Wechsel bleiben die lokalen Sicherungskopien (kopije) des aktuellen Stands erhalten (vorher wurde ein älterer Stand zurückgeholt).
 
