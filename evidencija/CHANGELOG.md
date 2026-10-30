@@ -1,3 +1,6 @@
+## 1.61.0
+- 🌲 Lovišta (*Sustav → Postavke modula → Lovišta*, ili *Postavke lovišta → Otvori Lovišta*): udruga može imati više lovišta – svako sa svojim podacima:
+
 ## 1.60.0
 - 📥 Karta bez signala (Karta lovišta, gumb 📥 ispod ◎): satelitska karta lovišta preuzima se na mobitel (granice lovišta, inače sve naprave, s rubom).
 
