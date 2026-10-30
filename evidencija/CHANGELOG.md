@@ -1,3 +1,6 @@
+## 1.62.2
+- Logo programa doteran: srnjak prirodnijih proporcija (kratak vrat, duge noge, šesterac), mirnije boje sumraka; noge ne nestaju iza donje grede absehena.
+
 ## 1.62.1
 - Novi logo programa: absehen (križ nišana) s točkom na plećki srnjaka u sumrak. Mijenja se u izborniku (potpis programa), na prijavi, u *Pomoć* i na GitHubu (banner),
 
