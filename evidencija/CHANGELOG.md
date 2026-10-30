@@ -1,3 +1,6 @@
+## 1.60.0
+- 📥 Karta bez signala (Karta lovišta, gumb 📥 ispod ◎): satelitska karta lovišta preuzima se na mobitel (granice lovišta, inače sve naprave, s rubom).
+
 ## 1.59.0
 - 🧹 Reset nakon testiranja (*Sustav → Podaci*): kad udruga završi isprobavanje, administrator jednim potezom briše probne upise –
 
