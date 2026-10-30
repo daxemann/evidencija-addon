@@ -1,3 +1,6 @@
+## 1.62.1
+- Novi logo programa: absehen (križ nišana) s točkom na plećki srnjaka u sumrak. Mijenja se u izborniku (potpis programa), na prijavi, u *Pomoć* i na GitHubu (banner),
+
 ## 1.62.0
 - 📄 Moji dokumenti (novi modul, *Sustav → Moduli*; izbornik *Moje → Moji dokumenti*, kartica u *Moj profil*, gumb za početnu):
 
