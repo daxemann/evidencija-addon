@@ -1,3 +1,6 @@
+## 1.58.0
+- 🦌 Odstrel (novi modul, *Sustav → Moduli*, zadano uključen) – izbornik *Lovište → 🦌 Odstrel*:
+
 ## 1.57.0
 - 🌤️ Vrijeme i Mjesec (novi modul, *Sustav → Moduli*, zadano uključen; treba modul Lovište) – blok „🌤️ Vrijeme u lovištu“ na početnoj i na vrhu stranice 🌲 Danas u lovištu:
 
