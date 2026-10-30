@@ -1,3 +1,6 @@
+## 1.62.0
+- 📄 Moji dokumenti (novi modul, *Sustav → Moduli*; izbornik *Moje → Moji dokumenti*, kartica u *Moj profil*, gumb za početnu):
+
 ## 1.61.0
 - 🌲 Lovišta (*Sustav → Postavke modula → Lovišta*, ili *Postavke lovišta → Otvori Lovišta*): udruga može imati više lovišta – svako sa svojim podacima:
 
