@@ -1,3 +1,6 @@
+## 1.59.0
+- 🧹 Reset nakon testiranja (*Sustav → Podaci*): kad udruga završi isprobavanje, administrator jednim potezom briše probne upise –
+
 ## 1.58.0
 - 🦌 Odstrel (novi modul, *Sustav → Moduli*, zadano uključen) – izbornik *Lovište → 🦌 Odstrel*:
 
