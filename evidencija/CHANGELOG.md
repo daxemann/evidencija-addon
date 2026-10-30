@@ -1,3 +1,6 @@
+## 1.57.0
+- 🌤️ Vrijeme i Mjesec (novi modul, *Sustav → Moduli*, zadano uključen; treba modul Lovište) – blok „🌤️ Vrijeme u lovištu“ na početnoj i na vrhu stranice 🌲 Danas u lovištu:
+
 ## 1.54.1
 - Izbornik – Dezinfekcija: *Stanice i QR* je postavka i nalazi se samo u ⚙️ Sustav → Postavke modula (više ne u izborniku lijevo).
 

@@ -615,3 +615,134 @@ main {
 .lov-gumb-aktivno { border-color: #c0392b; box-shadow: 0 0 0 2px rgba(192,57,43,.25); }
 .pocetna-matrica .sticky-start { position: sticky; left: 0; background: var(--bs-body-bg, #fff); z-index: 1; min-width: 220px; }
 .pocetna-matrica th { vertical-align: bottom; }
+
+/* ---------- Tema: gumb ☀️/🌙 ---------- */
+.tema-gumb { border: 0; background: none; font-size: 1.15rem; line-height: 1; padding: .3rem .45rem; border-radius: 6px; }
+.tema-gumb:hover { background: rgba(127,127,127,.15); }
+.tema-ik-tamna { display: none; }
+[data-bs-theme=dark] .tema-ik-tamna { display: inline; }
+[data-bs-theme=dark] .tema-ik-svijetla { display: none; }
+
+/* ---------- Tamna tema (Bootstrap 5.3 data-bs-theme=dark + naše boje) ---------- */
+[data-bs-theme=dark] {
+    --bs-body-bg: #121712; --bs-body-color: #dfe5da; --bs-emphasis-color: #f2f5ef;
+    --bs-secondary-bg: #1b221a; --bs-tertiary-bg: #182017; --bs-border-color: #2f3a2d;
+    --bs-link-color: #9ccc7a; --bs-link-hover-color: #bfe3a4; --bs-link-color-rgb: 156,204,122; --bs-link-hover-color-rgb: 191,227,164;
+    --ev-kartica: #182017; --ev-povrsina: #1d261c; --ev-zeleno-svijetlo: #20321c; --ev-tekst-zeleno: #9ccc7a;
+    color-scheme: dark;
+}
+[data-bs-theme=dark] body { background: var(--bs-body-bg); }
+[data-bs-theme=dark] a, [data-bs-theme=dark] .btn-link { color: var(--ev-tekst-zeleno); }
+[data-bs-theme=dark] .sidebar { background-image: linear-gradient(180deg, #0c140c 0%, #172414 70%); }
+[data-bs-theme=dark] .top-row { background-color: #161d15; border-bottom-color: #2a3428; }
+[data-bs-theme=dark] .izbornik-gumb { color: var(--ev-tekst-zeleno); }
+[data-bs-theme=dark] .card { --bs-card-bg: var(--ev-kartica); --bs-card-cap-bg: #1f291d; }
+[data-bs-theme=dark] .list-group { --bs-list-group-bg: var(--ev-kartica); }
+[data-bs-theme=dark] .table { --bs-table-bg: transparent; }
+[data-bs-theme=dark] .modal-content, [data-bs-theme=dark] .dropdown-menu { --bs-modal-bg: var(--ev-kartica); --bs-dropdown-bg: var(--ev-kartica); }
+/* Bootstrap klase koje u tamnoj temi ostaju svijetle */
+[data-bs-theme=dark] .bg-light, [data-bs-theme=dark] .bg-white { background-color: var(--bs-tertiary-bg) !important; color: var(--bs-body-color); }
+[data-bs-theme=dark] .bg-light.text-dark, [data-bs-theme=dark] .bg-white.text-dark { color: var(--bs-body-color) !important; }
+[data-bs-theme=dark] .text-dark:not(.badge):not(.bg-warning):not(.bg-info):not(.btn) { color: var(--bs-body-color) !important; }
+[data-bs-theme=dark] .btn-light { --bs-btn-bg: #263024; --bs-btn-color: #dfe5da; --bs-btn-border-color: #34402f; --bs-btn-hover-bg: #2f3b2c; --bs-btn-hover-color: #fff; }
+[data-bs-theme=dark] .text-muted { color: #9aa596 !important; }
+[data-bs-theme=dark] .form-control, [data-bs-theme=dark] .form-select { background-color: #10150f; border-color: #34402f; }
+[data-bs-theme=dark] .form-control:disabled, [data-bs-theme=dark] .form-control[readonly] { background-color: #1a2119; }
+/* gumbi i kartice u zelenom */
+[data-bs-theme=dark] .btn-outline-primary { --bs-btn-color: #9ccc7a; --bs-btn-border-color: #4f7d3e; --bs-btn-hover-color: #fff; --bs-btn-active-color: #fff; --bs-btn-hover-bg: #3d6b2f; --bs-btn-active-bg: #3d6b2f; }
+[data-bs-theme=dark] .nav-tabs .nav-link { color: var(--ev-tekst-zeleno); }
+[data-bs-theme=dark] .nav-tabs .nav-link.active { color: var(--bs-emphasis-color); }
+[data-bs-theme=dark] .kartica-broj, [data-bs-theme=dark] .auth-logo, [data-bs-theme=dark] .izjava h2 { color: var(--ev-tekst-zeleno); }
+[data-bs-theme=dark] .sustav-kartica:hover { border-color: #4f7d3e; }
+[data-bs-theme=dark] .modul-kartica.ukljuceno { background: var(--ev-zeleno-svijetlo); }
+[data-bs-theme=dark] .lov-gumb { background: var(--ev-kartica); border-color: #2f3a2d; color: #e3ead9; }
+[data-bs-theme=dark] .lov-gumb:hover, [data-bs-theme=dark] .lov-gumb:active { background: #1f2b1d; color: #fff; }
+[data-bs-theme=dark] .lov-gumb small { color: #9aa596; }
+/* površine s fiksnom svijetlom bojom */
+[data-bs-theme=dark] .foto-mala, [data-bs-theme=dark] .foto-velika, [data-bs-theme=dark] .gp-foto,
+[data-bs-theme=dark] .oglas-slika, [data-bs-theme=dark] .oglas-bez-slike, [data-bs-theme=dark] .oglas-mini-slika { background: #263024; }
+[data-bs-theme=dark] .chat { background: #0f140e; }
+[data-bs-theme=dark] .chat-oblak { background: #1f291d; }
+[data-bs-theme=dark] .chat-red.moja .chat-oblak { background: #2c4523; }
+[data-bs-theme=dark] .lf-toast, [data-bs-theme=dark] .dez-obavijest, [data-bs-theme=dark] .modal-okvir { background: var(--ev-povrsina); color: var(--bs-body-color); }
+[data-bs-theme=dark] .instal-traka, [data-bs-theme=dark] .demo-prijava { background: var(--ev-zeleno-svijetlo); border-color: #34502b; }
+[data-bs-theme=dark] .demo-traka { background: #3a3112; border-color: #6b5a1f; }
+[data-bs-theme=dark] .kal-mjesec, [data-bs-theme=dark] .kal-zag, [data-bs-theme=dark] .kal-dan { border-color: #2f3a2d; }
+[data-bs-theme=dark] .kal-zag { background: #1b221a; }
+[data-bs-theme=dark] .kal-van { background: #0e120d; color: #5f6a5b; }
+[data-bs-theme=dark] .kal-danas { background: #20321c; }
+[data-bs-theme=dark] .dez-gps-ceka, [data-bs-theme=dark] .dez-potvrda { background: #1b221a; border-color: #2f3a2d; }
+[data-bs-theme=dark] .dez-gps-ok { background: #1c3318; border-color: #3f7a2f; }
+[data-bs-theme=dark] .dez-gps-pola { background: #3a3112; border-color: #8a6d1f; }
+[data-bs-theme=dark] .dez-gps-ne { background: #3d1717; border-color: #8a3333; }
+[data-bs-theme=dark] .revir-legenda { background: rgba(20,26,19,.9); }
+[data-bs-theme=dark] .revir-lociraj { background: #1d261c; color: #dfe5da; border-color: rgba(255,255,255,.2); }
+[data-bs-theme=dark] .revir-status.slobodno { background: #1c3318; color: #a5d68f; }
+[data-bs-theme=dark] .revir-status.zauzeto { background: #3d1717; color: #f2a5a5; }
+[data-bs-theme=dark] .revir-vrsta span { background: #1b221a; }
+[data-bs-theme=dark] .revir-vrsta small { color: #aab3a6; }
+[data-bs-theme=dark] .revir-vrsta input:checked + span { background: #1c3318; }
+[data-bs-theme=dark] .revir-kvarovi { background: #3a2f10; color: #f4d27a; }
+[data-bs-theme=dark] .revir-kvarovi.nesigurno { background: #3d1717; color: #f2a5a5; }
+[data-bs-theme=dark] .revir-kvar { border-top-color: rgba(255,255,255,.08); }
+[data-bs-theme=dark] .gl-red.sos { background: #3d1717; } [data-bs-theme=dark] .gl-red.signal { background: #1b221a; }
+[data-bs-theme=dark] .gl-u-tijeku { background: #2e1414; border-color: #6b2b2b; }
+[data-bs-theme=dark] .gp-zadnji.gp-ok { background: #1c3318; } [data-bs-theme=dark] .gp-zadnji.gp-vec, [data-bs-theme=dark] .gp-ceka { background: #3a3112; } [data-bs-theme=dark] .gp-zadnji.gp-greska { background: #3d1717; }
+[data-bs-theme=dark] .dom-kal .dom-slobodno, [data-bs-theme=dark] .dom-legenda .slobodno { background: #182a15; }
+[data-bs-theme=dark] .dom-kal .dom-odobreno, [data-bs-theme=dark] .dom-legenda .odobreno { background: #3d1717; }
+[data-bs-theme=dark] .dom-kal .dom-ceka, [data-bs-theme=dark] .dom-legenda .ceka { background: #3a3112; }
+[data-bs-theme=dark] .dom-kal .dom-udruga, [data-bs-theme=dark] .dom-legenda .udruga { background: #15263a; }
+[data-bs-theme=dark] .dom-kal .kal-van.dom-slobodno { background: #121c10; }
+[data-bs-theme=dark] .dom-pin { background: #1d261c; }
+[data-bs-theme=dark] .obav-tekst { border-color: #2f3a2d; }
+[data-bs-theme=dark] .logo-okvir { background: #f4f6f2; border-color: #2f3a2d; } /* logo udruge na svijetloj podlozi */
+[data-bs-theme=dark] .izjava .pod, [data-bs-theme=dark] .izjava .mala, [data-bs-theme=dark] .isk-kartica-tijelo .isk-k-sek { color: #9aa596; }
+/* ostaje svijetlo: iskaznica, QR, potpis (moraju se čitati/skenirati kao na papiru) */
+[data-bs-theme=dark] .isk-kartica, [data-bs-theme=dark] .isk-qr-veliki, [data-bs-theme=dark] .dez-potpis-platno, [data-bs-theme=dark] .dez-potpis-slika { color: #212529; }
+
+/* ---------- Vjetar ---------- */
+.vjetar-kompas { flex: 0 0 auto; }
+.vk-krug { fill: #f4f6f2; stroke: #c9d2c3; stroke-width: 1.5; }
+.vk-crta { stroke: #9aa596; stroke-width: 1; } .vk-glavna { stroke: #3d6b2f; stroke-width: 2; }
+.vk-slovo { font: 700 11px system-ui, sans-serif; fill: #3d4a39; }
+.vk-strelica { fill: #e0a100; stroke: #8a6200; stroke-width: .8; } .vk-rep { fill: #e0a100; }
+.vk-sredina { fill: #fff; stroke: #c9d2c3; } .vk-broj { font: 700 15px system-ui, sans-serif; fill: #1f3d1f; } .vk-jed { font: 7px system-ui, sans-serif; fill: #6c7569; }
+[data-bs-theme=dark] .vk-krug { fill: #182017; stroke: #34402f; } [data-bs-theme=dark] .vk-sredina { fill: #10150f; stroke: #34402f; }
+[data-bs-theme=dark] .vk-slovo { fill: #c9d2c3; } [data-bs-theme=dark] .vk-broj { fill: #e3ead9; } [data-bs-theme=dark] .vk-glavna { stroke: #7fb069; }
+.vjetar-glavno { display: flex; gap: 1rem; align-items: center; }
+@media (max-width: 420px) { .vjetar-glavno { flex-direction: column; align-items: flex-start; } }
+.vjetar-sati { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 2px; text-align: center; }
+.vjetar-sati > div { display: flex; flex-direction: column; align-items: center; line-height: 1.2; }
+.vjetar-strelica { display: inline-block; font-weight: 700; font-size: 1.05rem; color: #e0a100; }
+.vjetar-strelica-velika { display: inline-block; font-weight: 800; font-size: 1.4rem; color: #e0a100; line-height: 1; }
+/* karta */
+.revir-vjetar-kontrola { display: flex; gap: .45rem; align-items: center; background: rgba(255,255,255,.92); border-radius: .4rem; padding: .3rem .55rem; font-size: .8rem; line-height: 1.2;
+    box-shadow: 0 1px 5px rgba(0,0,0,.35); color: #212529; }
+.revir-vjetar-kontrola small { color: #6c757d; }
+[data-bs-theme=dark] .revir-vjetar-kontrola { background: rgba(20,26,19,.92); color: #e3ead9; } [data-bs-theme=dark] .revir-vjetar-kontrola small { color: #9aa596; }
+.revir-pin-vjetar { position: absolute; right: -9px; top: -9px; width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #fff; color: #fff;
+    font: 800 .7rem/15px system-ui, sans-serif; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,.6); pointer-events: none; }
+.revir-pin-vjetar.dobar { background: #2e7d32; } .revir-pin-vjetar.los { background: #c62828; }
+.revir-pin-vjetar.static { position: static; display: inline-block; width: 14px; height: 14px; font-size: .55rem; line-height: 11px; vertical-align: -1px; margin-right: 1px; }
+.revir-vjetar { border-left: 4px solid #9aa596; background: var(--bs-tertiary-bg); border-radius: .4rem; padding: .4rem .6rem; }
+.revir-vjetar.dobar { border-left-color: #2e7d32; } .revir-vjetar.los { border-left-color: #c62828; }
+.vjetar-birac { display: grid; grid-template-columns: repeat(3, 3.2rem); gap: .3rem; }
+.vjetar-birac label { margin: 0; cursor: pointer; }
+.vjetar-birac input { position: absolute; opacity: 0; pointer-events: none; }
+.vjetar-birac span { display: flex; align-items: center; justify-content: center; height: 2.4rem; border: 2px solid var(--bs-border-color); border-radius: .5rem; font-weight: 700; font-size: .85rem; }
+.vjetar-birac input:checked + span { border-color: #2e7d32; background: #2e7d32; color: #fff; }
+.vjetar-birac input:focus-visible + span { outline: 2px solid #1a73e8; }
+.vjetar-birac-sredina { display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+@media (max-width: 576px) { .vjetar-sati { grid-template-columns: repeat(6, minmax(0, 1fr)); } .vjetar-sati > div:nth-child(even) { display: none; } }
+
+/* ---------- Vrijeme i Mjesec ---------- */
+.vrijeme-svjetlo { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .25rem; text-align: center; }
+.vrijeme-svjetlo span { display: block; font-size: .7rem; text-transform: uppercase; letter-spacing: .04em; color: var(--bs-secondary-color); }
+.vrijeme-svjetlo b { font-size: 1.05rem; } .vrijeme-svjetlo .vr-istaknuto { color: #c98a00; }
+[data-bs-theme=dark] .vrijeme-svjetlo .vr-istaknuto { color: #f0b43c; }
+.vrijeme-red { display: flex; align-items: center; gap: .75rem; padding-top: .6rem; border-top: 1px solid var(--bs-border-color); }
+.vr-mjesec { font-size: 2.2rem; line-height: 1; }
+.vr-najbolje { background: #eef6ea; border: 1px solid #cfe3c6; border-radius: .5rem; padding: .45rem .65rem; font-size: .9rem; }
+[data-bs-theme=dark] .vr-najbolje { background: #1c3318; border-color: #34502b; }
+.vr-kad .table td { padding: .3rem .4rem; }
+@media (max-width: 420px) { .vrijeme-svjetlo b { font-size: .9rem; } .vrijeme-svjetlo span { font-size: .6rem; } }

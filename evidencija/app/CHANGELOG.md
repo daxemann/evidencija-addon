@@ -1,5 +1,28 @@
 # Promjene
 
+## 1.57.0 – 2026-10
+- **🌤️ Vrijeme i Mjesec** (novi modul, *Sustav → Moduli*, zadano uključen; treba modul Lovište) – blok **„🌤️ Vrijeme u lovištu“** na početnoj i na vrhu stranice **🌲 Danas u lovištu**:
+  - **Svjetlo dana:** zora, izlazak i zalazak Sunca, sumrak, dužina dana – za vaše lovište.
+  - **Mjesec:** mijena i osvijetljenost s kratkim savjetom (svijetla / tamna noć).
+  - **Temperatura i kiša** (vjerojatnost u sljedećih 6 sati).
+  - **🎯 Kad u lov?** – danas i sutra, jutro (zora – 2 h nakon izlaska) i večer (2 h prije zalaska – sumrak): ✅ Dobro / 🤏 Slabije / ❌ Loše s razlogom (vjetar, kiša, pun mjesec, „vedri se nakon kiše“) i preporuka najboljeg termina.
+  - Sunce i Mjesec računa mobitel sam – **rade i bez interneta**. Prognoza: Open-Meteo (kao kod vjetra).
+  - Za nove instalacije blok je uključen za članove i uloge; ako ste već mijenjali početnu, uključite ga u *Sustav → Početna stranica*.
+
+## 1.56.0 – 2026-10
+- **💨 Vjetar** (novi modul, *Sustav → Moduli*, zadano uključen; treba modul Lovište):
+  - **Idealni smjerovi vjetra za svaku napravu:** *Karta lovišta → ✏️ Uredi naprave →* naprava *→ ✏️ Uredi* – kompas s 8 strana (S, SI, I, JI, J, JZ, Z, SZ): odakle smije puhati da miris ne ide prema divljači.
+  - **Karta lovišta:** gore lijevo trenutni vjetar (smjer, km/h). Naprave s upisanim smjerovima imaju oznaku **✓** (vjetar povoljan) ili **✗** (nepovoljan); u prozorčiću naprave „Vjetar sada iz SI, 12 km/h – povoljan ✓“.
+  - **Početna – blok „💨 Vjetar – kompas“:** kompas sa strelicom, Beaufort, udari, temperatura, kamo ide vaš miris, stabilnost smjera, vjetar za sljedećih 12 sati i **čeke za ovaj vjetar** (dodir otvara napravu na karti).
+    Za nove instalacije uključen za članove i uloge; ako ste već mijenjali početnu, uključite ga u *Sustav → Početna stranica*.
+  - Prognoza: **Open-Meteo** (besplatno, bez registracije). Dohvaća je mobitel izravno za središte lovišta, sprema 15 min; bez interneta pokazuje zadnju prognozu.
+
+## 1.55.0 – 2026-10
+- **🎨 Tamna tema:** cijela aplikacija može biti svijetla ili tamna – tamna štedi bateriju i ne zasljepljuje na čeki u sumrak.
+  - **⚙️ Sustav → 🎨 Izgled:** zadana tema za sve korisnike – *Svijetla*, *Tamna* ili *Kao uređaj* (prati postavku mobitela/računala). Zadano: svijetla.
+  - **Svaki korisnik sam:** gumb **🌙 / ☀️** u gornjoj traci, ili **Moj profil → 🎨 Izgled na ovom uređaju** (Zadano udruge / Svijetla / Tamna / Kao uređaj). Odabir vrijedi na tom uređaju.
+  - Ispis je uvijek svijetli; članska iskaznica, QR i potpisi ostaju na bijeloj podlozi.
+
 ## 1.54.1 – 2026-10
 - **Izbornik – Dezinfekcija:** *Stanice i QR* je postavka i nalazi se samo u **⚙️ Sustav → Postavke modula** (više ne u izborniku lijevo).
   Tko nema pristup Sustavu (npr. lovočuvar s pravom „stanice/QR“), i dalje ga vidi u izborniku Dezinfekcija.
