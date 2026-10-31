@@ -1,3 +1,6 @@
+## 1.63.2
+- iPhone – ikona na početnom zaslonu: „Lokacija nije dostupna“, a u Chromeu radi: aplikacija s početnog zaslona koristi dopuštenje „Safari web-stranice“, ne ono od Chromea.
+
 ## 1.63.1
 - Ikona na početnom zaslonu otvarala je http:// adresu → nije bilo lokacije (GPS), rada bez signala ni obavijesti, dok je u Chromeu sve radilo.
 
