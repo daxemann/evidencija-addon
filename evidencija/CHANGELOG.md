@@ -1,3 +1,6 @@
+## 1.62.3
+- Uloge i prava – preglednija tablica: prava su sada redovi grupirani po područjima (Članovi i udruga, Kalendar/obavijesti, Dezinfekcija, Lovište i lov, Inventura/domovi/popusti, Administracija), a
+
 ## 1.62.2
 - Logo programa doteran: srnjak prirodnijih proporcija (kratak vrat, duge noge, šesterac), mirnije boje sumraka; noge ne nestaju iza donje grede absehena.
 
