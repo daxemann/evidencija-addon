@@ -1,3 +1,6 @@
+## 1.63.0
+- 🔎 Tko ima koja prava (*Sustav → Korisnici i prava*, poveznica i u *Uloge i prava*): svi računi s ulogama i pravima koja iz njih proizlaze na jednoj stranici – bez otvaranja svakog člana.
+
 ## 1.62.4
 - Sustav → Početna stranica – preglednije: blokovi su podijeljeni u tri skupine: 🟩 Veliki gumbi (lov), 📋 Blokovi s podacima, 🔘 Gumbi iz izbornika.
 
