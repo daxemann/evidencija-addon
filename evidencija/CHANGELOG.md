@@ -1,3 +1,6 @@
+## 1.62.4
+- Sustav → Početna stranica – preglednije: blokovi su podijeljeni u tri skupine: 🟩 Veliki gumbi (lov), 📋 Blokovi s podacima, 🔘 Gumbi iz izbornika.
+
 ## 1.62.3
 - Uloge i prava – preglednija tablica: prava su sada redovi grupirani po područjima (Članovi i udruga, Kalendar/obavijesti, Dezinfekcija, Lovište i lov, Inventura/domovi/popusti, Administracija), a
 
