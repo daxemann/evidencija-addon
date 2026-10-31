@@ -1,3 +1,6 @@
+## 1.63.1
+- Ikona na početnom zaslonu otvarala je http:// adresu → nije bilo lokacije (GPS), rada bez signala ni obavijesti, dok je u Chromeu sve radilo.
+
 ## 1.63.0
 - 🔎 Tko ima koja prava (*Sustav → Korisnici i prava*, poveznica i u *Uloge i prava*): svi računi s ulogama i pravima koja iz njih proizlaze na jednoj stranici – bez otvaranja svakog člana.
 
