@@ -1,3 +1,6 @@
+## 1.64.0
+- Članovi po sekcijama – upis, uređivanje i brisanje preko uloga: prava *Članovi – upis i uređivanje* i novo Članovi – brisanje vrijede samo za sekcije za koje je uloga dodijeljena (npr. *Adm
+
 ## 1.63.2
 - iPhone – ikona na početnom zaslonu: „Lokacija nije dostupna“, a u Chromeu radi: aplikacija s početnog zaslona koristi dopuštenje „Safari web-stranice“, ne ono od Chromea.
 
