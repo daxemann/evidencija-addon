@@ -1,3 +1,6 @@
+## 1.66.0
+- 🏷️ Zaliha markica (uključuje se u *Sustav → 🦌 Odstrel – evidencija*): originalni brojevi s izdatnice po evidenciji (sekcija / spojene sekcije / udruga) i lovnoj godini – upis rasponom o
+
 ## 1.65.0
 - Odstrel – vođenje evidencije (*Sustav → Postavke modula → 🦌 Odstrel – evidencija*): svaka udruga bira kako vodi odstrel, markice i „papire“:
 
