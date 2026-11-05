@@ -1,3 +1,6 @@
+## 1.66.1
+- Odstrel – upozorenje SLE: ispravljen tekst („od toga N s prekoračenim rokom od 7 dana“).
+
 ## 1.66.0
 - 🏷️ Zaliha markica (uključuje se u *Sustav → 🦌 Odstrel – evidencija*): originalni brojevi s izdatnice po evidenciji (sekcija / spojene sekcije / udruga) i lovnoj godini – upis rasponom o
 
