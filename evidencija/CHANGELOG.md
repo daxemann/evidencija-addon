@@ -1,3 +1,6 @@
+## 1.65.0
+- Odstrel – vođenje evidencije (*Sustav → Postavke modula → 🦌 Odstrel – evidencija*): svaka udruga bira kako vodi odstrel, markice i „papire“:
+
 ## 1.64.0
 - Članovi po sekcijama – upis, uređivanje i brisanje preko uloga: prava *Članovi – upis i uređivanje* i novo Članovi – brisanje vrijede samo za sekcije za koje je uloga dodijeljena (npr. *Adm
 
