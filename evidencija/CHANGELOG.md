@@ -1,3 +1,6 @@
+## 1.68.0
+- Skupni lov – Lovnik / voditelj lova se bira: pri pokretanju lova (novi lov i *🎯 Počni lov* iz kalendara) obavezno polje 👤 Lovnik / voditelj lova.
+
 ## 1.67.0
 - Skupni lov – broj lova ručno (prema HLS papiru): na popisu sudionika i kod završenog lova *🔢 Broj lova – promijeni* – upišite broj s dopuštenja / bloka (npr. *0123* ili *12/2026*).
 
