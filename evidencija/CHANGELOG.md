@@ -1,3 +1,6 @@
+## 1.67.0
+- Skupni lov – broj lova ručno (prema HLS papiru): na popisu sudionika i kod završenog lova *🔢 Broj lova – promijeni* – upišite broj s dopuštenja / bloka (npr. *0123* ili *12/2026*).
+
 ## 1.66.1
 - Odstrel – upozorenje SLE: ispravljen tekst („od toga N s prekoračenim rokom od 7 dana“).
 
