@@ -1,3 +1,6 @@
+## 1.69.0
+- 🏅 Bodovi za funkciju (*Sustav → Uloge i prava → Funkcije u udruzi*, gumb 🏅 u retku funkcije): broj bodova i datum (dan.mjesec.) kad se svake godine dodaju.
+
 ## 1.68.0
 - Skupni lov – Lovnik / voditelj lova se bira: pri pokretanju lova (novi lov i *🎯 Počni lov* iz kalendara) obavezno polje 👤 Lovnik / voditelj lova.
 
