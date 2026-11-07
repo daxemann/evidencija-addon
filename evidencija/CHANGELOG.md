@@ -1,3 +1,6 @@
+## 1.70.0
+- 🔒 Lozinka kopije – promjena i zaboravljena lozinka, sigurno: *Sustav → Sigurnosne kopije → Promijeni lozinku kopije (i ako je zaboravljena)*. Stara lozinka kopije nije potrebna, ali potvrda i
+
 ## 1.69.0
 - 🏅 Bodovi za funkciju (*Sustav → Uloge i prava → Funkcije u udruzi*, gumb 🏅 u retku funkcije): broj bodova i datum (dan.mjesec.) kad se svake godine dodaju.
 
