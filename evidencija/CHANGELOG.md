@@ -1,3 +1,6 @@
+## 1.73.0
+- 📅 Godišnji bodovi za obveze (univerzalno, ne samo psi): dodjela bodova za razne obveze jednom godišnje – npr. držanje lovačkog psa, briga o hranilištu, održavanje čeke. Odmah odobreno.
+
 ## 1.72.1
 - 🐕 Sustav → Bodovi: bodovi po psu upisuju se izravno uz vrstu i dan (bez odlaska u Vrste radnih akcija). Promjena vrijedi za nove upise – već upisani bodovi ostaju.
 
