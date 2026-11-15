@@ -1,3 +1,6 @@
+## 1.75.0
+- 🔎 Gdje je…? – tražilica u izborniku (gore) i u Uputama: upišite npr. *bodovi* i dobijete popis gdje se to nalazi u programu (npr. 🏅 Sustav → Bodovi, 🏷️ Sustav → Vrste radnih akcija, 📚 Arhiva bodova) –
+
 ## 1.74.0
 - 🔐 Novo pravo „Godišnje obveze – dodjela“ (Sustav → Uloge i prava → Članovi i udruga): samo s tim pravom smiju se uključivati / isključivati članovi u godišnjim obvezama i lovački psi za godišnje bodov
 
