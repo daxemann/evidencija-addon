@@ -1,3 +1,6 @@
+## 1.72.1
+- 🐕 Sustav → Bodovi: bodovi po psu upisuju se izravno uz vrstu i dan (bez odlaska u Vrste radnih akcija). Promjena vrijedi za nove upise – već upisani bodovi ostaju.
+
 ## 1.72.0
 - 🐕 Bodovi za držanje lovačkog psa – automatski, kao bodovi za funkciju: jednom godišnje na zadani dan, odmah odobreno, bodovi iz Vrste radnih akcija.
 
