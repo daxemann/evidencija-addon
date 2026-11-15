@@ -1,3 +1,6 @@
+## 1.71.0
+- ✏️ Radne akcije – ispravak prije odobrenja: tko odobrava (pravo *odobri*) kod akcije na čekanju klikne ✏️ Uredi i može ispraviti datum, sate, opis, vrstu i dodatnu opremu (traktor, motorna pila, trime
+
 ## 1.70.0
 - 🔒 Lozinka kopije – promjena i zaboravljena lozinka, sigurno: *Sustav → Sigurnosne kopije → Promijeni lozinku kopije (i ako je zaboravljena)*. Stara lozinka kopije nije potrebna, ali potvrda i
 
