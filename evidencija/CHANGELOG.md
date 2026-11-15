@@ -1,3 +1,6 @@
+## 1.74.0
+- 🔐 Novo pravo „Godišnje obveze – dodjela“ (Sustav → Uloge i prava → Članovi i udruga): samo s tim pravom smiju se uključivati / isključivati članovi u godišnjim obvezama i lovački psi za godišnje bodov
+
 ## 1.73.1
 - 📅 Godišnje obveze na kartici člana (Funkcije): ovlaštena osoba dodaje obvezu s napomenom, uključuje ✅ / isključuje ⏸️ ili uklanja – isto kao u Radne akcije → Godišnje obveze.
 
