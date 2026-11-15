@@ -1,3 +1,6 @@
+## 1.72.0
+- 🐕 Bodovi za držanje lovačkog psa – automatski, kao bodovi za funkciju: jednom godišnje na zadani dan, odmah odobreno, bodovi iz Vrste radnih akcija.
+
 ## 1.71.0
 - ✏️ Radne akcije – ispravak prije odobrenja: tko odobrava (pravo *odobri*) kod akcije na čekanju klikne ✏️ Uredi i može ispraviti datum, sate, opis, vrstu i dodatnu opremu (traktor, motorna pila, trime
 
