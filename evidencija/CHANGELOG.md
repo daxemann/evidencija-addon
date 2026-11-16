@@ -1,3 +1,6 @@
+## 1.77.0
+- 🔒 Javno dostupna baza – program se zaključava: ako poslužitelj ne štiti mapu `podaci` (npr. nginx ne poštuje datoteku `.htaccess`) pa se baza može preuzeti s interneta, program se zaključa za sve i pr
+
 ## 1.76.0
 - 📓 Lovački dnevnik kao pravi dnevnik: složen po lovnoj godini → mjesecu → danu (s danom u tjednu). Razdoblje: dan, mjesec, lovna godina (i prošle), od – do ili sve, sa strelicama ◀ ▶. Klik na dan otvar
 
