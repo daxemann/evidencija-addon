@@ -1,3 +1,6 @@
+## 1.79.0
+- 🔐 Šifriranje podataka članova (Sustav → Sigurnosne kopije, zadano isključeno): adresa, telefoni, e-mail, OIB, datum i mjesto rođenja, broj lovačke iskaznice i diplome, napomena, registarske oznake (i 
+
 ## 1.78.0
 - 💾 Podsjetnik na kompletnu kopiju: administratori (pravo „Sustav“) na početnoj vide podsjetnik kad zadnja preuzeta kompletna kopija ima više od 30 dana ili još nijedna nije preuzeta – s gumbom ravno na
 
