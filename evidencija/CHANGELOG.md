@@ -1,3 +1,6 @@
+## 1.79.1
+- 🔐 Šifriranje – čišćenje starih kopija: dok je šifriranje uključeno, program jednom dnevno sam briše nešifrirane kopije baze u mapi `kopije` na poslužitelju (npr. stare kopije koje je drugi poslužitelj
+
 ## 1.79.0
 - 🔐 Šifriranje podataka članova (Sustav → Sigurnosne kopije, zadano isključeno): adresa, telefoni, e-mail, OIB, datum i mjesto rođenja, broj lovačke iskaznice i diplome, napomena, registarske oznake (i 
 
