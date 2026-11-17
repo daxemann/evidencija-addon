@@ -1,3 +1,6 @@
+## 1.78.0
+- 💾 Podsjetnik na kompletnu kopiju: administratori (pravo „Sustav“) na početnoj vide podsjetnik kad zadnja preuzeta kompletna kopija ima više od 30 dana ili još nijedna nije preuzeta – s gumbom ravno na
+
 ## 1.77.0
 - 🔒 Javno dostupna baza – program se zaključava: ako poslužitelj ne štiti mapu `podaci` (npr. nginx ne poštuje datoteku `.htaccess`) pa se baza može preuzeti s interneta, program se zaključa za sve i pr
 
