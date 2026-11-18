@@ -1,3 +1,6 @@
+## 1.82.0
+- 🏅 Bodovi za funkciju – po članu isključivo: na kartici člana → Funkcije kod svake funkcije s bodovima kvačica „🏅 bodovi“ (zadano uključeno, kao dosad). Ima li član dvije slične funkcije, a u udruzi bo
+
 ## 1.81.1
 - 🦌 Ručni upis bodova radi i bez modula: polja *„Oduzmi lovcu: staro … · novo …“* u obrascu Upis odstrela sada se vide i kad je modul „Bodovi za odstrel“ isključen (prazno = bodovi se ne mijenjaju). Mod
 
