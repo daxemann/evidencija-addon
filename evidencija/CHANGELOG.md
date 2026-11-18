@@ -1,3 +1,6 @@
+## 1.80.0
+- 🦌 Bodovi za odstrel (novi modul, zadano isključen – Sustav → Moduli): pri upisu odstrela lovcu se bodovi oduzimaju automatski. U Sustav → Bodovi po vrsti i kategoriji upišete koliko se oduzima iz star
+
 ## 1.79.2
 - 🔐 Šifriranje radi i sa starijim SQLite-om: na nekim poslužiteljima (starija verzija SQLite-a) uključivanje šifriranja javljalo je grešku *„qualified table names are not allowed … within triggers“*. Pr
 
