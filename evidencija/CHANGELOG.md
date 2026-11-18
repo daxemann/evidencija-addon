@@ -1,3 +1,6 @@
+## 1.81.0
+- 🦌 Bodovi za odstrel – ručni upis: popis iznosa u Sustav → Bodovi više nije obavezan. Ako za vrstu / kategoriju nema iznosa, u obrascu Upis odstrela pojave se polja *„Oduzmi lovcu: staro … · novo …“* –
+
 ## 1.80.0
 - 🦌 Bodovi za odstrel (novi modul, zadano isključen – Sustav → Moduli): pri upisu odstrela lovcu se bodovi oduzimaju automatski. U Sustav → Bodovi po vrsti i kategoriji upišete koliko se oduzima iz star
 
