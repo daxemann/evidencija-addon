@@ -1,3 +1,6 @@
+## 1.81.1
+- 🦌 Ručni upis bodova radi i bez modula: polja *„Oduzmi lovcu: staro … · novo …“* u obrascu Upis odstrela sada se vide i kad je modul „Bodovi za odstrel“ isključen (prazno = bodovi se ne mijenjaju). Mod
+
 ## 1.81.0
 - 🦌 Bodovi za odstrel – ručni upis: popis iznosa u Sustav → Bodovi više nije obavezan. Ako za vrstu / kategoriju nema iznosa, u obrascu Upis odstrela pojave se polja *„Oduzmi lovcu: staro … · novo …“* –
 
