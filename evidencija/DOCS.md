@@ -36,6 +36,10 @@ aktive Server zuerst selbst (nach 1,5 min Funnel neu, nach 3 min Evidencija-Knot
 der Standby nach ca. 6 Minuten mit frischer Kopie – nur wenn **beide** die Seite nicht erreichen und die Versionen
 gleich sind. Danach 6 Stunden kein automatischer Wechsel zurück. „Entwicklung“ schaltet auch diese Übernahme ab.
 
+Vor jedem Import hebt der Standby den vorherigen Stand auf. Ist die Verschlüsselung in der App eingeschaltet, werden
+Stände (und Tageskopien darin), die noch unverschlüsselt sind, automatisch gelöscht – nur wenn die laufende Datenbank
+heil und vollständig verschlüsselt ist und „Entwicklung“ aus ist. Was sich nicht prüfen lässt, bleibt liegen.
+
 | Option | HR | DE |
 |---|---|---|
 | failover | true | true |

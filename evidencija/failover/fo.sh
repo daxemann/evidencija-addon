@@ -218,14 +218,62 @@ uvoz() { # uvoz datei.tgz [arhiviraj]
     rm -rf "$FO/prethodno"; [ -d /data/Podaci ] && { mv /data/Podaci "$FO/prethodno"; staro="$FO/prethodno"; }
   fi
   mv "$n/Podaci" /data/Podaci
-  # Lokale Sicherungskopien (werden nicht übertragen) aus dem gerade ersetzten Stand behalten
-  [ -n "$staro" ] && [ -d "$staro/kopije" ] && [ ! -d /data/Podaci/kopije ] && cp -a "$staro/kopije" /data/Podaci/
+  # Lokale Sicherungskopien (werden nicht übertragen) aus dem gerade ersetzten Stand mitnehmen (verschieben: im alten Stand bleiben keine)
+  [ -n "$staro" ] && [ -d "$staro/kopije" ] && [ ! -d /data/Podaci/kopije ] && mv "$staro/kopije" /data/Podaci/
   rm -rf "$FO/partner_ts"; [ -d "$n/tailscale" ] && mv "$n/tailscale" "$FO/partner_ts"
   [ -f "$n/javna_adresa" ] && cp "$n/javna_adresa" "$FO/adresa"
   chown -R www-data:www-data /data/Podaci
   rm -rf "$n" "$RUN/sync_fehler"
   date -Iseconds > "$FO/zadnja_sink"
   log "Import fertig ($(du -sh /data/Podaci | cut -f1))"
+  ocisti_klartext
+  return 0
+}
+
+# ---------------------------------------------------------------- Unverschlüsselte alte Stände
+# Ist die Verschlüsselung in der App eingeschaltet, werden alte Stände in $FO/prethodno und $FO/arhiva gelöscht, die noch
+# von vor dem Einschalten stammen – ebenso unverschlüsselte Tageskopien darin. Im Zweifel (nicht lesbar) bleibt alles liegen.
+ist_klartext() { # ist_klartext datenbank -> 0 = sicher unverschlüsselt · 1 = verschlüsselt · 2 = unklar
+  php /failover/klartext.php "$1" >/dev/null 2>&1
+  case $? in 10) return 0 ;; 0) return 1 ;; *) return 2 ;; esac
+}
+ocisti_klartext() { # nur unter Sperre aufrufen; liefert immer 0
+  razvoj_aktiv && return 0   # „Entwicklung“ an → nichts löschen
+  php /failover/klartext.php /data/Podaci/evidencija.db zivo >/dev/null 2>&1 || return 0   # laufende Datenbank heil + verschlüsselt?
+  local s k r ime kopija=0 unklar=""
+  for s in "$FO/prethodno" "$FO"/arhiva/*; do
+    [ -d "$s" ] && [ ! -L "$s" ] || continue
+    ime=${s#"$FO"/}
+    ist_klartext "$s/evidencija.db"; r=$?
+    if [ $r = 0 ]; then
+      rm -rf "$s" && log "Unverschlüsselter alter Stand gelöscht: $ime"
+      continue
+    fi
+    [ $r = 2 ] && unklar="$unklar $ime"
+    for k in "$s"/kopije/*.db; do
+      [ -f "$k" ] && [ ! -L "$k" ] || continue
+      ist_klartext "$k"; r=$?
+      [ $r = 0 ] && rm -f "$k" "$k-wal" "$k-shm" && kopija=$((kopija + 1))
+      [ $r = 2 ] && unklar="$unklar $ime/kopije"
+    done
+  done
+  [ $kopija -gt 0 ] && log "Unverschlüsselte Tageskopien in alten Ständen gelöscht: $kopija"
+  # Reste abgebrochener Läufe (älter als 2 h – ein laufender Vorgang ist nie so alt)
+  find "$FO" -maxdepth 1 \( -name 'snimka.*' -o -name novo -o -name dolazna.tgz \) -mmin +120 -exec rm -rf {} + 2>/dev/null
+  # nicht lesbare Stände: nichts löschen, nur einmal melden
+  unklar=$(echo "$unklar" | tr ' ' '
+' | sed '/^$/d' | sort -u | paste -sd' ' -)
+  if [ -n "$unklar" ] && [ "$unklar" != "$(cat "$FO/klartext_unklar" 2>/dev/null)" ]; then
+    melde "Evidencija: alter Stand nicht lesbar" "$LOK: Verschlüsselung nicht prüfbar, nichts gelöscht: $unklar"
+  fi
+  if [ -n "$unklar" ]; then echo "$unklar" > "$FO/klartext_unklar"; else rm -f "$FO/klartext_unklar"; fi
+  return 0
+}
+ocisti_taeglich() { # beim Start und 1× am Tag; ist gerade ein anderer Vorgang am Laufen, beim nächsten Mal
+  local d; d=$(date +%F)
+  [ "$(cat "$RUN/klartext_tag" 2>/dev/null)" = "$d" ] && return 0
+  razvoj_aktiv && return 0
+  flock -o -n "$LOCK" /failover/fo.sh ocisti_klartext && echo "$d" > "$RUN/klartext_tag"
 }
 
 povuci() { # povuci [arhiviraj]  – Kopie vom aktiven Partner holen und einspielen
@@ -474,7 +522,7 @@ daemon() {
   [ -z "$(uloga)" ] && postavi_ulogu "$(opt '.failover_pocetna_uloga' | sed 's/^$/aktivan/')"
   log "Start – Standort $LOK, Partner $PARTNER, Rolle $(uloga)"
   touch "$WARTUNG"            # sicher starten
-  rm -f "$RUN"/seite_* "$RUN"/popravak* "$RUN/predaja_od"
+  rm -f "$RUN"/seite_* "$RUN"/popravak* "$RUN/predaja_od" "$RUN/klartext_tag"
   ctl_start
 
   # warten, bis der Steuerknoten läuft (max. 3 min)
@@ -574,6 +622,7 @@ daemon() {
     objavi
     pruefe_seite
     wache_seite
+    ocisti_taeglich
     sleep 30
   done
 }
@@ -596,6 +645,7 @@ case "${1:-}" in
   vrati) cmd_vrati ;;
   preuzmi_od_mene) cmd_preuzmi_od_mene ;;
   najava) cmd_najava ;;
+  ocisti_klartext) ocisti_klartext ;;
   popravi) cmd_popravi "${2:-1}" ;;
   azuriraj) azuriraj_sebe ;;
   zaustavljanje) zaustavljanje ;;

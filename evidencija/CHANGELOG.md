@@ -1,3 +1,7 @@
+## 1.82.0.2
+- Failover: ist die Verschlüsselung in der App eingeschaltet, werden alte, noch unverschlüsselte Stände im Failover-Archiv automatisch und endgültig gelöscht (beim Start, nach jedem Sync, 1× am Tag). Nicht lesbare Stände bleiben liegen und werden einmal gemeldet. Bei „Entwicklung“ an oder ausgeschalteter Verschlüsselung wird nichts gelöscht.
+- Failover: Tageskopien bleiben nicht mehr zusätzlich im alten Stand liegen; Reste abgebrochener Kopien werden aufgeräumt.
+
 ## 1.82.0.1
 - Failover: Seite nicht erreichbar, obwohl beide Server laufen (z. B. Funnel-Freigabe weg) – der aktive Server repariert sich selbst (nach 1,5 min Funnel neu, nach 3 min Knoten neu). Hilft das nicht, übernimmt der Standby nach ca. 6 min mit frischer Kopie – nur wenn beide die Seite nicht erreichen, danach 6 h kein automatisches Zurück. Meldung bei Ausfall über 7 min und wenn die Seite wieder da ist.
 - Failover: hängen gebliebener Wartungsmodus (503) wird automatisch aufgehoben.
