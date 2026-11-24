@@ -31,6 +31,11 @@ Zwei Home-Assistant-Server (z. B. HR und DE) teilen sich **dieselbe Adresse**. I
 Der andere ist Standby, holt 3× täglich (03, 11, 19 Uhr) eine Kopie und übernimmt, wenn der aktive
 länger als 5 Minuten weg ist. Kommt der ausgefallene zurück, wird er Standby („wer läuft, bleibt“).
 
+Laufen beide Server, aber die öffentliche Seite antwortet nicht (z. B. Funnel-Freigabe weg), repariert sich der
+aktive Server zuerst selbst (nach 1,5 min Funnel neu, nach 3 min Evidencija-Knoten neu). Hilft das nicht, übernimmt
+der Standby nach ca. 6 Minuten mit frischer Kopie – nur wenn **beide** die Seite nicht erreichen und die Versionen
+gleich sind. Danach 6 Stunden kein automatischer Wechsel zurück. „Entwicklung“ schaltet auch diese Übernahme ab.
+
 | Option | HR | DE |
 |---|---|---|
 | failover | true | true |
@@ -45,6 +50,6 @@ Dashboard-Helfer (optional, im HA des Admins): `input_boolean.evidencija_entwick
 `input_button.evidencija_wechseln`, `input_button.evidencija_sync_jetzt`, `input_button.evidencija_aktualisieren`.
 Sensoren: `sensor.evidencija_aktiver_server`, `sensor.evidencija_failover_status`,
 `sensor.evidencija_letzter_sync`, `binary_sensor.evidencija_partner_erreichbar`,
-`binary_sensor.evidencija_seite_erreichbar`, `sensor.evidencija_letzter_ausfall` (nur Info).
+`binary_sensor.evidencija_seite_erreichbar`, `sensor.evidencija_letzter_ausfall`.
 
 Ohne `failover: true` ändert sich am Verhalten nichts.

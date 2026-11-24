@@ -1,3 +1,8 @@
+## 1.82.0.1
+- Failover: Seite nicht erreichbar, obwohl beide Server laufen (z. B. Funnel-Freigabe weg) – der aktive Server repariert sich selbst (nach 1,5 min Funnel neu, nach 3 min Knoten neu). Hilft das nicht, übernimmt der Standby nach ca. 6 min mit frischer Kopie – nur wenn beide die Seite nicht erreichen, danach 6 h kein automatisches Zurück. Meldung bei Ausfall über 7 min und wenn die Seite wieder da ist.
+- Failover: hängen gebliebener Wartungsmodus (503) wird automatisch aufgehoben.
+- Failover: fällt beim Standby selbst das Internet aus, übernimmt er nicht mehr.
+
 ## 1.82.0
 - 🏅 Bodovi za funkciju – po članu isključivo: na kartici člana → Funkcije kod svake funkcije s bodovima kvačica „🏅 bodovi“ (zadano uključeno, kao dosad). Ima li član dvije slične funkcije, a u udruzi bo
 

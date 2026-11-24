@@ -26,6 +26,18 @@ GRACE_HART=900     # wenn Tailscale den Knoten noch als „online“ meldet
 GRACE_GEPLANT=1800 # nach angekündigtem Neustart des Partners
 SYNC_STUNDEN="03 11 19"
 
+# Öffentliche Seite antwortet nicht, obwohl beide Server laufen (z. B. Funnel-Freigabe weg):
+SEITE_STUFE1=90        # aktiver Server: Funnel-Freigabe neu setzen
+SEITE_STUFE2=180       # aktiver Server: Evidencija-Knoten neu starten …
+SEITE_WIEDERHOLEN=600  # … höchstens alle 10 min
+SEITE_WECHSEL=360      # Standby: geplanter Wechsel (mit frischer Kopie) …
+SEITE_PARTNER=300      # … wenn der aktive Server die Seite selbst auch so lange nicht erreicht
+SEITE_MELDUNG=420      # Meldung „Seite nicht erreichbar“
+SEITE_VERSUCHE=3       # so viele automatische Wechsel-Versuche je Ausfall …
+SEITE_PAUSE=900        # … mit dieser Pause dazwischen
+AUTO_SPERRE=21600      # nach automatischem Wechsel 6 h kein automatisches Zurück (kein Ping-Pong)
+PREDAJA_MAX=1200       # länger dauert kein Wechsel – danach gilt er als abgebrochen
+
 LOK=$(opt '.failover_lokacija' | tr '[:lower:]' '[:upper:]')
 PARTNER=$(opt '.failover_partner')
 NOTIFY=$(opt '.failover_obavijest')
@@ -41,7 +53,10 @@ postavi_ulogu() {
   local alt; alt=$(uloga)
   echo "$1" > "$FO/uloga"
   if [ "$1" = aktivan ] && [ "$alt" != aktivan ]; then jetzt > "$FO/aktivan_od"; fi
+  # neue Rolle → Seiten-Ausfall neu zählen
+  [ "$1" = "$alt" ] || rm -f "$RUN/seite_aus_od" "$RUN/popravak_1" "$RUN/popravak_2"
 }
+alter() { local v; v=$(cat "$1" 2>/dev/null); echo $(( $(jetzt) - ${v:-0} )); } # Sekunden seit Zeitstempel in Datei
 razvoj_lokal() { [ -f "$FO/razvoj" ]; }
 
 verzija() {
@@ -138,6 +153,18 @@ adresse_erreichbar() {
   [ "$kod" != 000 ] && [ "$kod" -lt 500 ] 2>/dev/null
 }
 
+# Hat dieser Server selbst Internet? (Tailscale-Zentrale – ohne sie wäre eine Übernahme ohnehin unmöglich)
+internet_da() { curl -s -o /dev/null --max-time 8 https://controlplane.tailscale.com/; }
+
+# Seit wie vielen Sekunden antwortet die öffentliche Seite nicht? 0 = sie antwortet, -1 = nicht geprüft
+seite_aus_sek() {
+  if [ ! -f "$RUN/seite_geprueft" ] || [ "$(alter "$RUN/seite_geprueft")" -gt 300 ]; then echo -1
+  elif [ -f "$RUN/seite_aus_od" ]; then local s; s=$(alter "$RUN/seite_aus_od"); echo $(( s > 0 ? s : 1 ))
+  else echo 0; fi
+}
+predaja_u_tijeku() { [ -f "$RUN/predaja_od" ] && [ "$(alter "$RUN/predaja_od")" -lt $PREDAJA_MAX ]; }
+popravak_u_tijeku() { [ -f "$RUN/popravak" ] && [ "$(alter "$RUN/popravak")" -lt 300 ]; }
+
 razvoj_aktiv() { razvoj_lokal || { partner_frisch && [ "$(pj .razvoj)" = true ]; }; }
 
 # ---------------------------------------------------------------- Home Assistant
@@ -218,7 +245,8 @@ preuzmi() { # Übernahme mit der zuletzt kopierten Identität
 
 planirana_predaja() { # dieser Server übernimmt geplant vom aktiven Partner
   log "Geplanter Wechsel: $PARTNER → $LOK"
-  pc POST /predaja/priprema 30 >/dev/null || { log "Partner antwortet nicht"; return 1; }
+  # „odustani“ auch hier: die Anfrage kann beim Partner verspätet doch noch angekommen sein
+  pc POST /predaja/priprema 30 >/dev/null || { log "Partner antwortet nicht"; pc POST /predaja/odustani 30 >/dev/null; return 1; }
   if ! povuci 1; then pc POST /predaja/odustani 30 >/dev/null; return 1; fi
   if ! pc POST /predaja/otpusti 60 >/dev/null; then pc POST /predaja/odustani 30 >/dev/null; return 1; fi
   for _ in $(seq 1 45); do ev_online_irgendwo || break; sleep 2; done
@@ -234,15 +262,32 @@ planirana_predaja() { # dieser Server übernimmt geplant vom aktiven Partner
 }
 
 # Befehle, die der Partner über api.php auslöst (laufen unter Sperre)
-cmd_priprema() { [ "$(uloga)" = aktivan ] || return 1; touch "$WARTUNG"; log "Wechsel angefragt – Wartungsmodus"; }
-cmd_odustani() { [ "$(uloga)" = aktivan ] && rm -f "$WARTUNG"; log "Wechsel abgebrochen"; }
-cmd_otpusti()  { ev_stop; postavi_ulogu pripravan; touch "$WARTUNG"; log "Übergeben an $PARTNER – hier Standby"; }
-cmd_vrati()    { postavi_ulogu aktivan; ev_start && rm -f "$WARTUNG"; }
+cmd_priprema() { [ "$(uloga)" = aktivan ] || return 1; jetzt > "$RUN/predaja_od"; touch "$WARTUNG"; log "Wechsel angefragt – Wartungsmodus"; }
+cmd_odustani() { rm -f "$RUN/predaja_od"; [ "$(uloga)" = aktivan ] && rm -f "$WARTUNG"; log "Wechsel abgebrochen"; }
+cmd_otpusti()  { ev_stop; postavi_ulogu pripravan; touch "$WARTUNG"; rm -f "$RUN/predaja_od"; log "Übergeben an $PARTNER – hier Standby"; }
+cmd_vrati()    { rm -f "$RUN/predaja_od"; postavi_ulogu aktivan; ev_start && rm -f "$WARTUNG"; }
 cmd_preuzmi_od_mene() { # Partner bittet: übernimm du (wird asynchron ausgeführt)
   [ "$(uloga)" = pripravan ] || return 1
   razvoj_lokal && return 1
   flock -n "$LOCK" true || { log "Wechsel-Anfrage abgelehnt: gerade beschäftigt"; return 1; }
   ( flock -o -n "$LOCK" /failover/fo.sh planirana_predaja ) >/dev/null 2>&1 &
+}
+cmd_popravi() { # popravi 1|2 – Selbstheilung des aktiven Servers (unter Sperre)
+  [ "$(uloga)" = aktivan ] || return 1
+  predaja_u_tijeku && return 1
+  jetzt > "$RUN/popravak"
+  local ok=1
+  if [ "$1" = 1 ] && [ "$(ev status --json 2>/dev/null | jq -r '.BackendState')" = Running ]; then
+    ev funnel --https=443 off >/dev/null 2>&1
+    ev funnel --bg 5080 >/dev/null 2>&1 && ok=0
+  else
+    ev_stop
+    ev_start && ok=0
+  fi
+  # hängen gebliebener Wartungsmodus (z. B. Knoten kam beim Start zu spät hoch)
+  [ $ok = 0 ] && rm -f "$WARTUNG" "$RUN/predaja_od"
+  rm -f "$RUN/popravak"
+  return $ok
 }
 cmd_najava() { echo $(( $(jetzt) + GRACE_GEPLANT )) > "$RUN/najava_do"; log "Partner kündigt Neustart an"; }
 
@@ -287,7 +332,7 @@ objavi() {
     "{\"friendly_name\":\"Evidencija Partner ($PARTNER_LOK) erreichbar\",\"device_class\":\"connectivity\"}"
 }
 
-# Erreichbarkeit der öffentlichen Seite (so wie die Jäger sie sehen) – nur zur Info
+# Erreichbarkeit der öffentlichen Seite (so wie die Jäger sie sehen); ausgewertet in wache_seite()
 pruefe_seite() {
   local a; a=$(cat "$FO/adresa" 2>/dev/null); [ -z "$a" ] && a=$(cat /data/javna_adresa 2>/dev/null)
   [ -z "$a" ] && return 0
@@ -295,6 +340,18 @@ pruefe_seite() {
   r=$(curl -s -o /dev/null -w '%{http_code} %{time_total}' --max-time 15 "$a" 2>/dev/null); kod=${r%% *}
   ms=$(awk -v t="${r##* }" 'BEGIN{printf "%d", t*1000}')
   local ok=false; [ "$kod" != 000 ] && [ "$kod" -lt 500 ] 2>/dev/null && ok=true
+  # Zähler für die Selbstheilung: keine Verbindung / Funnel ohne Ziel / Wartung.
+  # 500 zählt nicht – ein Programmfehler wäre nach einem Wechsel auch auf dem anderen Server da.
+  # Ohne eigenes Internet sagt die Prüfung nichts über die Seite aus → gilt als „nicht geprüft“.
+  if [ "$kod" = 000 ] && ! internet_da; then
+    rm -f "$RUN/seite_aus_od" "$RUN/seite_geprueft"
+  else
+    case "$kod" in
+      000|502|503|504) [ -f "$RUN/seite_aus_od" ] || jetzt > "$RUN/seite_aus_od" ;;
+      *) rm -f "$RUN/seite_aus_od" ;;
+    esac
+    jetzt > "$RUN/seite_geprueft"
+  fi
   local f="$FO/seite_aus_seit" t; t=$(date -Iseconds)
   if $ok; then
     if [ -f "$f" ]; then # Ausfall vorbei → festhalten
@@ -314,6 +371,71 @@ pruefe_seite() {
     local la; la=$(cat "$FO/seite_letzter_ausfall")
     ha_state sensor.evidencija_letzter_ausfall "$(jq -r .von <<<"$la")" "$(jq -c \
       '{friendly_name:"Evidencija letzter Ausfall", device_class:"timestamp", icon:"mdi:web-off", bis:.bis, dauer_min:.dauer_min}' <<<"$la")"
+  fi
+}
+
+# ---------------------------------------------------------------- Seite antwortet nicht, obwohl beide Server laufen
+wache_seite() {
+  local aus; aus=$(seite_aus_sek)
+  if [ "$aus" -le 0 ]; then
+    [ "$aus" = 0 ] || return 0
+    rm -f "$RUN/popravak_1" "$RUN/popravak_2" "$RUN/seite_versuche"
+    if [ -f "$RUN/seite_gemeldet" ]; then
+      rm -f "$RUN/seite_gemeldet"
+      melde "Evidencija: Seite wieder erreichbar" "Die öffentliche Seite antwortet wieder (aktiv: $(aktivni_lok))."
+    fi
+    return 0
+  fi
+  if [ "$(uloga)" = aktivan ]; then selbstheilung "$aus"; else wechsel_wegen_seite "$aus"; fi
+  if [ "$(seite_aus_sek)" -ge $SEITE_MELDUNG ] && [ ! -f "$RUN/seite_gemeldet" ] && internet_da; then
+    touch "$RUN/seite_gemeldet"
+    melde "Evidencija: Seite nicht erreichbar" "Die öffentliche Seite antwortet seit $(( $(seite_aus_sek) / 60 )) min nicht (aktiv: $(aktivni_lok))."
+  fi
+  return 0
+}
+aktivni_lok() {
+  if [ "$(uloga)" = aktivan ]; then echo "$LOK"
+  elif partner_frisch && [ "$(pj .uloga)" = aktivan ]; then echo "$PARTNER_LOK"
+  else echo "unbekannt"; fi
+}
+
+selbstheilung() { # aktiver Server: erst Funnel neu setzen, dann Knoten neu starten
+  local aus=$1 stufe=0
+  if [ "$aus" -ge $SEITE_STUFE2 ]; then
+    [ "$(alter "$RUN/popravak_2")" -ge $SEITE_WIEDERHOLEN ] && stufe=2
+  elif [ "$aus" -ge $SEITE_STUFE1 ] && [ ! -f "$RUN/popravak_1" ]; then
+    stufe=1
+  fi
+  [ $stufe = 0 ] && return 0
+  predaja_u_tijeku && return 0
+  partner_frisch && [ "$(pj .seite_aus_sek)" = 0 ] && return 0  # Partner sieht die Seite → nichts anfassen
+  internet_da || return 0                                        # eigenes Internet weg → Neustart hilft nicht
+  jetzt > "$RUN/popravak_$stufe"
+  log "Seite seit $aus s nicht erreichbar – Selbstheilung Stufe $stufe"
+  flock -o -n "$LOCK" /failover/fo.sh popravi "$stufe" || log "Selbstheilung Stufe $stufe nicht gelungen"
+}
+
+wechsel_wegen_seite() { # Standby: Partner läuft, aber die Seite ist für beide weg → geplanter Wechsel
+  local aus=$1
+  [ "$aus" -ge $SEITE_WECHSEL ] || return 0
+  razvoj_aktiv && return 0
+  partner_frisch && [ "$(pj .uloga)" = aktivan ] || return 0     # Partner ganz weg → normale Übernahme
+  local paus; paus=$(pj .seite_aus_sek)
+  [ "${paus:-0}" -ge $SEITE_PARTNER ] || return 0
+  [ "$(pj .popravak)" = true ] && return 0
+  [ "$(pj .verzija)" = "$(verzija)" ] || return 0                # Kopie ginge nicht – es bleibt bei der Meldung
+  local auto; auto=$(pj .auto_predaja)
+  [ $(( $(jetzt) - ${auto:-0} )) -ge $AUTO_SPERRE ] || return 0
+  local n; n=$(cat "$RUN/seite_versuche" 2>/dev/null || echo 0)
+  [ "$n" -lt $SEITE_VERSUCHE ] || return 0
+  [ "$(alter "$RUN/seite_versuch_od")" -ge $SEITE_PAUSE ] || return 0
+  internet_da || return 0
+  log "Seite seit $aus s nicht erreichbar, $PARTNER_LOK läuft aber – automatischer Wechsel (Versuch $((n + 1)))"
+  jetzt > "$RUN/seite_versuch_od"; echo $((n + 1)) > "$RUN/seite_versuche"
+  if flock -o -n "$LOCK" /failover/fo.sh planirana_predaja; then
+    jetzt > "$FO/auto_predaja"
+  else
+    log "Automatischer Wechsel nicht gelungen"
   fi
 }
 
@@ -352,6 +474,7 @@ daemon() {
   [ -z "$(uloga)" ] && postavi_ulogu "$(opt '.failover_pocetna_uloga' | sed 's/^$/aktivan/')"
   log "Start – Standort $LOK, Partner $PARTNER, Rolle $(uloga)"
   touch "$WARTUNG"            # sicher starten
+  rm -f "$RUN"/seite_* "$RUN"/popravak* "$RUN/predaja_od"
   ctl_start
 
   # warten, bis der Steuerknoten läuft (max. 3 min)
@@ -425,6 +548,10 @@ daemon() {
       fi
       # --- Übernahme bei Ausfall
       local t; t=$(jetzt)
+      # eigenes Internet weg → nicht der Partner ist ausgefallen, sondern dieser Server: Wartezeit neu beginnen
+      if [ $((t - bez_partnera)) -ge 60 ] && [ $((t - bez_adrese)) -ge 60 ] && ! internet_da; then
+        t=$(jetzt); bez_partnera=$t; bez_adrese=$t
+      fi
       local grace=$GRACE
       [ "$(cat "$RUN/najava_do" 2>/dev/null || echo 0)" -gt "$t" ] 2>/dev/null && grace=$GRACE_GEPLANT
       if ! razvoj_aktiv && [ $((t - bez_partnera)) -ge $grace ] && [ $((t - bez_adrese)) -ge $grace ] && ctl_laeuft; then
@@ -446,6 +573,7 @@ daemon() {
     dashboard
     objavi
     pruefe_seite
+    wache_seite
     sleep 30
   done
 }
@@ -468,12 +596,16 @@ case "${1:-}" in
   vrati) cmd_vrati ;;
   preuzmi_od_mene) cmd_preuzmi_od_mene ;;
   najava) cmd_najava ;;
+  popravi) cmd_popravi "${2:-1}" ;;
   azuriraj) azuriraj_sebe ;;
   zaustavljanje) zaustavljanje ;;
   status)
     jq -cn --arg lok "$LOK" --arg ul "$(uloga)" --arg v "$(verzija)" --arg zs "$(cat "$FO/zadnja_sink" 2>/dev/null)" \
       --arg od "$(cat "$FO/aktivan_od" 2>/dev/null || echo 0)" --argjson rv "$(razvoj_lokal && echo true || echo false)" \
       --argjson ev "$(ev_laeuft_lokal && echo true || echo false)" --arg adr "$(cat "$FO/adresa" 2>/dev/null)" \
-      '{lokacija:$lok, uloga:$ul, verzija:$v, zadnja_sink:$zs, aktivan_od:($od|tonumber), razvoj:$rv, ev_radi:$ev, adresa:$adr}' ;;
+      --argjson sa "$(seite_aus_sek)" --argjson pop "$(popravak_u_tijeku && echo true || echo false)" \
+      --arg ap "$(cat "$FO/auto_predaja" 2>/dev/null || echo 0)" \
+      '{lokacija:$lok, uloga:$ul, verzija:$v, zadnja_sink:$zs, aktivan_od:($od|tonumber), razvoj:$rv, ev_radi:$ev, adresa:$adr,
+        seite_aus_sek:$sa, popravak:$pop, auto_predaja:($ap|tonumber)}' ;;
   *) echo "Befehl?"; exit 1 ;;
 esac
