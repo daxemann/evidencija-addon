@@ -1,3 +1,6 @@
+## 1.83.0.1
+- Failover: ist in der App die Verschlüsselung der Ausweis-Fotos und Unterschriften eingeschaltet, werden auch alte Stände mit noch offenen Bildern automatisch und endgültig gelöscht (gleiche Schutzregeln wie bei 1.82.0.2).
+
 ## 1.83.0
 - 🔐 Šifriranje fotografija dokumenata i potpisa (Sustav → Sigurnosne kopije, zadano isključeno): slike iz Moji dokumenti (iskaznica, oružni list, dozvole …) i svi potpisi (osobni, sa skupnog lova, dezin
 

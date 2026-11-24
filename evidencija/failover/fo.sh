@@ -233,18 +233,21 @@ uvoz() { # uvoz datei.tgz [arhiviraj]
 # ---------------------------------------------------------------- Unverschlüsselte alte Stände
 # Ist die Verschlüsselung in der App eingeschaltet, werden alte Stände in $FO/prethodno und $FO/arhiva gelöscht, die noch
 # von vor dem Einschalten stammen – ebenso unverschlüsselte Tageskopien darin. Im Zweifel (nicht lesbar) bleibt alles liegen.
-ist_klartext() { # ist_klartext datenbank -> 0 = sicher unverschlüsselt · 1 = verschlüsselt · 2 = unklar
-  php /failover/klartext.php "$1" >/dev/null 2>&1
+# Gleiches für Ausweis-Fotos und Unterschriften, sobald deren Verschlüsselung in der App eingeschaltet ist.
+ist_klartext() { # ist_klartext datenbank [datoteke] -> 0 = sicher unverschlüsselt · 1 = verschlüsselt · 2 = unklar
+  php /failover/klartext.php "$1" "${2:-}" >/dev/null 2>&1
   case $? in 10) return 0 ;; 0) return 1 ;; *) return 2 ;; esac
 }
 ocisti_klartext() { # nur unter Sperre aufrufen; liefert immer 0
   razvoj_aktiv && return 0   # „Entwicklung“ an → nichts löschen
   php /failover/klartext.php /data/Podaci/evidencija.db zivo >/dev/null 2>&1 || return 0   # laufende Datenbank heil + verschlüsselt?
-  local s k r ime kopija=0 unklar=""
+  local s k r ime kopija=0 slika=0 unklar="" datoteke=0
+  php /failover/klartext.php /data/Podaci/evidencija.db datoteke >/dev/null 2>&1 && datoteke=1   # auch Bilder verschlüsselt?
   for s in "$FO/prethodno" "$FO"/arhiva/*; do
     [ -d "$s" ] && [ ! -L "$s" ] || continue
     ime=${s#"$FO"/}
     ist_klartext "$s/evidencija.db"; r=$?
+    if [ $r = 1 ] && [ $datoteke = 1 ]; then ist_klartext "$s/evidencija.db" datoteke; r=$?; fi
     if [ $r = 0 ]; then
       rm -rf "$s" && log "Unverschlüsselter alter Stand gelöscht: $ime"
       continue
@@ -256,7 +259,14 @@ ocisti_klartext() { # nur unter Sperre aufrufen; liefert immer 0
       [ $r = 0 ] && rm -f "$k" "$k-wal" "$k-shm" && kopija=$((kopija + 1))
       [ $r = 2 ] && unklar="$unklar $ime/kopije"
     done
+    # einzelne offene Bilder in einem sonst verschlüsselten Stand
+    [ $datoteke = 1 ] || continue
+    for k in "$s"/foto/cdok-* "$s"/foto/potpis-* "$s"/foto/glpotpis-* "$s"/foto/dezpotpis-*; do
+      [ -f "$k" ] && [ ! -L "$k" ] && [ -s "$k" ] || continue
+      [ "$(head -c 4 "$k" | tr -d '\000')" = "php:" ] || { rm -f "$k" && slika=$((slika + 1)); }
+    done
   done
+  [ $slika -gt 0 ] && log "Unverschlüsselte Ausweis-Fotos/Unterschriften in alten Ständen gelöscht: $slika"
   [ $kopija -gt 0 ] && log "Unverschlüsselte Tageskopien in alten Ständen gelöscht: $kopija"
   # Reste abgebrochener Läufe (älter als 2 h – ein laufender Vorgang ist nie so alt)
   find "$FO" -maxdepth 1 \( -name 'snimka.*' -o -name novo -o -name dolazna.tgz \) -mmin +120 -exec rm -rf {} + 2>/dev/null

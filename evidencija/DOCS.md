@@ -39,6 +39,7 @@ gleich sind. Danach 6 Stunden kein automatischer Wechsel zurück. „Entwicklung
 Vor jedem Import hebt der Standby den vorherigen Stand auf. Ist die Verschlüsselung in der App eingeschaltet, werden
 Stände (und Tageskopien darin), die noch unverschlüsselt sind, automatisch gelöscht – nur wenn die laufende Datenbank
 heil und vollständig verschlüsselt ist und „Entwicklung“ aus ist. Was sich nicht prüfen lässt, bleibt liegen.
+Dasselbe gilt für Ausweis-Fotos und Unterschriften, sobald deren Verschlüsselung in der App eingeschaltet ist.
 
 | Option | HR | DE |
 |---|---|---|
