@@ -1,3 +1,6 @@
+## 1.83.0
+- 🔐 Šifriranje fotografija dokumenata i potpisa (Sustav → Sigurnosne kopije, zadano isključeno): slike iz Moji dokumenti (iskaznica, oružni list, dozvole …) i svi potpisi (osobni, sa skupnog lova, dezin
+
 ## 1.82.0.2
 - Failover: ist die Verschlüsselung in der App eingeschaltet, werden alte, noch unverschlüsselte Stände im Failover-Archiv automatisch und endgültig gelöscht (beim Start, nach jedem Sync, 1× am Tag). Nicht lesbare Stände bleiben liegen und werden einmal gemeldet. Bei „Entwicklung“ an oder ausgeschalteter Verschlüsselung wird nichts gelöscht.
 - Failover: Tageskopien bleiben nicht mehr zusätzlich im alten Stand liegen; Reste abgebrochener Kopien werden aufgeräumt.
