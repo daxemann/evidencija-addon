@@ -347,6 +347,12 @@ cmd_popravi() { # popravi 1|2 – Selbstheilung des aktiven Servers (unter Sperr
   rm -f "$RUN/popravak"
   return $ok
 }
+najava_gotova() { # Partner ist nach der Ankündigung wieder da → bei einem echten Ausfall gilt wieder die normale Wartezeit
+  local d; d=$(cat "$RUN/najava_do" 2>/dev/null); [ -n "$d" ] || return 0
+  # in den ersten 2 min antwortet er evtl. noch, weil er gerade erst herunterfährt
+  [ $(( $(jetzt) - d + GRACE_GEPLANT )) -ge 120 ] || return 0
+  rm -f "$RUN/najava_do"; log "Partner nach Neustart wieder da"
+}
 cmd_najava() { echo $(( $(jetzt) + GRACE_GEPLANT )) > "$RUN/najava_do"; log "Partner kündigt Neustart an"; }
 
 azuriraj_sebe() {
@@ -561,7 +567,7 @@ daemon() {
   bez_partnera=$(jetzt); bez_adrese=0
   while true; do
     ctl_laeuft && ctl_serve
-    if partner_status; then bez_partnera=$(jetzt); fi
+    if partner_status; then bez_partnera=$(jetzt); najava_gotova; fi
 
     if [ "$(uloga)" = aktivan ]; then
       ev_laeuft_lokal || { log "Evidencija-Knoten weg – Neustart"; ev_start; }
@@ -638,7 +644,10 @@ daemon() {
 }
 
 zaustavljanje() { # beim Stoppen des Add-ons: Partner vorwarnen
-  [ "$(uloga)" = aktivan ] && ctl_laeuft && pc POST /najava 5 >/dev/null 2>&1
+  if [ "$(uloga)" = aktivan ] && ctl_laeuft; then
+    pc POST /najava 5 >/dev/null 2>&1 && log "Partner vorgewarnt – Neustart" || log "Partner nicht erreichbar – keine Vorwarnung"
+  fi
+  flock -w 8 "$LOCK" true   # laufenden Import/Wechsel möglichst noch fertig werden lassen
   ev_stop
 }
 

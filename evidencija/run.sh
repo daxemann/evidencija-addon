@@ -11,13 +11,20 @@ FAILOVER=""
 APP_PID=""
 TS_PID=""
 zaustavi() {
+  trap : TERM INT    # drugi signal ne smije prekinuti zaustavljanje
   echo "[evidencija] zaustavljanje…"
-  [ -n "$APP_PID" ] && kill -TERM "$APP_PID" 2>/dev/null && wait "$APP_PID" 2>/dev/null
+  # najprije Failover-servis (daemon) – inače bi adresu odmah ponovno pokrenuo
+  [ -n "$TS_PID" ] && [ "$FAILOVER" = "true" ] && kill -TERM "$TS_PID" 2>/dev/null
   if [ "$FAILOVER" = "true" ]; then
-    /failover/fo.sh zaustavljanje 2>&1 | sed -u 's/^/[failover] /'
-    pkill -TERM tailscaled 2>/dev/null
+    timeout -k 2 22 /failover/fo.sh zaustavljanje 2>&1 | sed -u 's/^/[failover] /'
   fi
-  [ -n "$TS_PID" ] && kill -TERM "$TS_PID" 2>/dev/null
+  [ -n "$APP_PID" ] && kill -TERM "$APP_PID" 2>/dev/null && timeout 4 tail --pid="$APP_PID" -f /dev/null 2>/dev/null
+  if [ "$FAILOVER" = "true" ]; then
+    pkill -TERM tailscaled 2>/dev/null
+  elif [ -n "$TS_PID" ]; then
+    kill -TERM "$TS_PID" 2>/dev/null
+  fi
+  echo "[evidencija] zaustavljeno"
   exit 0
 }
 trap zaustavi TERM INT

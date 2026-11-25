@@ -30,6 +30,9 @@ COPY run.sh /run.sh
 RUN chmod +x /run.sh /failover/fo.sh && chown -R www-data:www-data /app \
     && sed -i 's#DocumentRoot /app#DocumentRoot /app\n\tInclude /failover/apache-failover.conf#' /etc/apache2/sites-available/000-default.conf
 
+# php:apache zaustavlja se sa SIGWINCH – run.sh (PID 1) ga ne hvata, pa bi add-on bio prekinut silom (kod 137)
+STOPSIGNAL SIGTERM
+
 ENV TZ=Europe/Zagreb
 WORKDIR /app
 CMD ["/run.sh"]

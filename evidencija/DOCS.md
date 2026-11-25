@@ -30,6 +30,8 @@ Aplikacija je PHP verzija programa [lovacka-evidencija](https://github.com/daxem
 Zwei Home-Assistant-Server (z. B. HR und DE) teilen sich **dieselbe Adresse**. Immer nur einer ist online.
 Der andere ist Standby, holt 3× täglich (03, 11, 19 Uhr) eine Kopie und übernimmt, wenn der aktive
 länger als 5 Minuten weg ist. Kommt der ausgefallene zurück, wird er Standby („wer läuft, bleibt“).
+Wird das Add-on auf dem aktiven Server gestoppt, neu gestartet oder aktualisiert, warnt er den Standby vor: Dieser
+wartet dann bis zu 30 Minuten. Ist der Server vorher zurück, gelten wieder die 5 Minuten.
 
 Laufen beide Server, aber die öffentliche Seite antwortet nicht (z. B. Funnel-Freigabe weg), repariert sich der
 aktive Server zuerst selbst (nach 1,5 min Funnel neu, nach 3 min Evidencija-Knoten neu). Hilft das nicht, übernimmt

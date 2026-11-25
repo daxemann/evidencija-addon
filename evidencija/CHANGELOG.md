@@ -1,3 +1,7 @@
+## 1.83.0.2
+- Add-on wird beim Stoppen und Aktualisieren sauber beendet (bisher nach 10 s hart abgebrochen, Exit 137). Dadurch wird der Partner-Server jetzt wirklich vorgewarnt und die öffentliche Adresse ordentlich abgemeldet.
+- Failover: nach einem angekündigten Neustart gilt wieder die normale Wartezeit (5 min statt 30 min), sobald der Partner zurück ist.
+
 ## 1.83.0.1
 - Failover: ist in der App die Verschlüsselung der Ausweis-Fotos und Unterschriften eingeschaltet, werden auch alte Stände mit noch offenen Bildern automatisch und endgültig gelöscht (gleiche Schutzregeln wie bei 1.82.0.2).
 
